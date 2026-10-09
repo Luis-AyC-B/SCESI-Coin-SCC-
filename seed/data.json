@@ -1,0 +1,838 @@
+{
+  "gestion": {
+    "nombre": "Gestión 2026",
+    "inicio": "2026-03-01"
+  },
+  "areas": [
+    "Backend",
+    "Seguridad",
+    "Inteligencia Artificial",
+    "Diseño UI/UX",
+    "Mobile",
+    "Desarrollo Web"
+  ],
+  "actividades": [
+    {
+      "codigo": "ASISTENCIA",
+      "nombre": "Asistir a un evento",
+      "abreviatura": "A",
+      "scc_sugeridos": 1
+    },
+    {
+      "codigo": "ORGANIZACION",
+      "nombre": "Organizar un evento",
+      "abreviatura": "E",
+      "scc_sugeridos": 8
+    },
+    {
+      "codigo": "TALLER",
+      "nombre": "Dar un curso o taller",
+      "abreviatura": "T",
+      "scc_sugeridos": 10
+    },
+    {
+      "codigo": "INVESTIGACION",
+      "nombre": "Investigación",
+      "abreviatura": "I",
+      "scc_sugeridos": 15
+    },
+    {
+      "codigo": "PROYECTO",
+      "nombre": "Proyecto del área",
+      "abreviatura": "P",
+      "scc_sugeridos": 15
+    },
+    {
+      "codigo": "COMPETENCIA",
+      "nombre": "Ganar una competencia",
+      "abreviatura": "C",
+      "scc_sugeridos": 20
+    }
+  ],
+  "rangos": [
+    {
+      "codigo": "NEWBIE",
+      "nombre": "Newbie",
+      "scc_requeridos": 0,
+      "prerequisito": null,
+      "orden": 1
+    },
+    {
+      "codigo": "JUNIOR",
+      "nombre": "Junior",
+      "scc_requeridos": 20,
+      "prerequisito": "NEWBIE",
+      "orden": 2
+    },
+    {
+      "codigo": "MID",
+      "nombre": "Mid",
+      "scc_requeridos": 50,
+      "prerequisito": "JUNIOR",
+      "orden": 3
+    },
+    {
+      "codigo": "SENIOR",
+      "nombre": "Senior",
+      "scc_requeridos": 100,
+      "prerequisito": "MID",
+      "orden": 4
+    }
+  ],
+  "usuarios": [
+    {
+      "handle": "saul",
+      "nombre": "Saul",
+      "email": "saul@scesi.dev",
+      "password": "scesi123",
+      "area": "Mobile",
+      "rol": "MIEMBRO"
+    },
+    {
+      "handle": "shamir",
+      "nombre": "Shamir Teran",
+      "email": "shamir@scesi.dev",
+      "password": "scesi123",
+      "area": "Inteligencia Artificial",
+      "rol": "DIRECTIVA"
+    },
+    {
+      "handle": "isaac",
+      "nombre": "Isaac",
+      "email": "isaac@scesi.dev",
+      "password": "scesi123",
+      "area": "Desarrollo Web",
+      "rol": "MIEMBRO"
+    },
+    {
+      "handle": "steven",
+      "nombre": "Steven",
+      "email": "steven@scesi.dev",
+      "password": "scesi123",
+      "area": "Seguridad",
+      "rol": "MIEMBRO"
+    },
+    {
+      "handle": "stefany",
+      "nombre": "Stefany",
+      "email": "stefany@scesi.dev",
+      "password": "scesi123",
+      "area": "Diseño UI/UX",
+      "rol": "MIEMBRO"
+    },
+    {
+      "handle": "franco",
+      "nombre": "Franco",
+      "email": "franco@scesi.dev",
+      "password": "scesi123",
+      "area": "Backend",
+      "rol": "MIEMBRO"
+    }
+  ],
+  "peticiones": [
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-03-14",
+      "titulo": "Asistencia: Bienvenida SCESI 2026",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-001"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-03-15"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-03-14",
+      "titulo": "Asistencia: Bienvenida SCESI 2026",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-019"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-03-15"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-03-14",
+      "titulo": "Asistencia: Bienvenida SCESI 2026",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-027"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-03-15"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-03-14",
+      "titulo": "Asistencia: Bienvenida SCESI 2026",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-034"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-03-15"
+    },
+    {
+      "usuario": "franco",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-03-14",
+      "titulo": "Asistencia: Bienvenida SCESI 2026",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-040"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-03-15"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "TALLER",
+      "fecha": "2026-03-28",
+      "titulo": "Taller Flutter desde cero",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-002"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-03-29"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "TALLER",
+      "fecha": "2026-04-04",
+      "titulo": "Taller HTML y CSS",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-020"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-04-05"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "TALLER",
+      "fecha": "2026-04-11",
+      "titulo": "Taller Linux para seguridad",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-028"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-04-12"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-04-18",
+      "titulo": "Organización: Game Jam SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-003"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-04-19"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "TALLER",
+      "fecha": "2026-04-18",
+      "titulo": "Taller Figma básico",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-035"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-04-19"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "PROYECTO",
+      "fecha": "2026-05-09",
+      "titulo": "App móvil de asistencia SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-004"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": 15,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-05-10"
+    },
+    {
+      "usuario": "franco",
+      "actividad": "TALLER",
+      "fecha": "2026-05-10",
+      "titulo": "Taller Git y GitHub",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-041"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-05-11"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-05-16",
+      "titulo": "Organización: Code Night",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-021"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-05-17"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "PROYECTO",
+      "fecha": "2026-06-06",
+      "titulo": "Sitio web de la SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-022"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": 15,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-06-07"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "COMPETENCIA",
+      "fecha": "2026-06-13",
+      "titulo": "1er lugar Hackathon Mobile Cochabamba",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-005"
+      ],
+      "monto_sugerido": 20,
+      "monto_aprobado": 20,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-06-14"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "PROYECTO",
+      "fecha": "2026-06-20",
+      "titulo": "Design system SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-036"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": 15,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-06-21"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "INVESTIGACION",
+      "fecha": "2026-07-04",
+      "titulo": "Investigación: OWASP Top 10 en apps universitarias",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-030"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": 15,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-07-05"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "TALLER",
+      "fecha": "2026-07-11",
+      "titulo": "Taller Kotlin Multiplatform",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-006"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-07-12"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "TALLER",
+      "fecha": "2026-07-18",
+      "titulo": "Taller React",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-023"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-07-19"
+    },
+    {
+      "usuario": "franco",
+      "actividad": "TALLER",
+      "fecha": "2026-07-20",
+      "titulo": "Taller FastAPI básico",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-042"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-07-21"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-07-30",
+      "titulo": "Organización: Design Sprint",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-037"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-07-31"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-08-09",
+      "titulo": "Asistencia: Webinar de JavaScript",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-045"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": null,
+      "estado": "RECHAZADA",
+      "motivo_rechazo": "Evento externo sin evidencia de asistencia",
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-08-10"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "PROYECTO",
+      "fecha": "2026-08-15",
+      "titulo": "Portal de eventos SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-024"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": 15,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-08-16"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-08-22",
+      "titulo": "Asistencia: Charla de ciberseguridad",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-031"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-08-23"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "TALLER",
+      "fecha": "2026-09-03",
+      "titulo": "Taller de UX Research",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-038"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-09-04"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-09-05",
+      "titulo": "Organización: Feria de proyectos SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-007"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-09-06"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-09-12",
+      "titulo": "Organización: CTF SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-032"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-09-13"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "TALLER",
+      "fecha": "2026-09-19",
+      "titulo": "Taller Next.js",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-025"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": 10,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-09-20"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "PROYECTO",
+      "fecha": "2026-09-20",
+      "titulo": "Rediseño de mi portafolio personal",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-046"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": null,
+      "estado": "RECHAZADA",
+      "motivo_rechazo": "No es un proyecto del área",
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-09-21"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "INVESTIGACION",
+      "fecha": "2026-09-26",
+      "titulo": "Investigación: Rendimiento de Flutter vs nativo",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-008"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": 15,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-09-27"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-10-02",
+      "titulo": "Organización: Expo de portafolios",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-039"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-10-03"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "COMPETENCIA",
+      "fecha": "2026-10-03",
+      "titulo": "1er lugar CTF regional Bolivia",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-049"
+      ],
+      "monto_sugerido": 20,
+      "monto_aprobado": null,
+      "estado": "PENDIENTE",
+      "motivo_rechazo": null,
+      "resuelta_por": null,
+      "resuelta_en": null
+    },
+    {
+      "usuario": "franco",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-10-04",
+      "titulo": "Organización: SCESI Init",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-043"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-10-05"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-10-06",
+      "titulo": "Organización: Noche de juegos SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-009"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-10-07"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-10-07",
+      "titulo": "Organización: Code Night de octubre",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-026"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-10-08"
+    },
+    {
+      "usuario": "franco",
+      "actividad": "TALLER",
+      "fecha": "2026-10-07",
+      "titulo": "Taller Docker desde cero",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-044"
+      ],
+      "monto_sugerido": 15,
+      "monto_aprobado": 15,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-10-08"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-10-08",
+      "titulo": "Organización: Taller abierto de CTF",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-033"
+      ],
+      "monto_sugerido": 8,
+      "monto_aprobado": 8,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-10-09"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-10-08",
+      "titulo": "Asistencia: Meetup GDG Cochabamba",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-048"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": null,
+      "estado": "PENDIENTE",
+      "motivo_rechazo": null,
+      "resuelta_por": null,
+      "resuelta_en": null
+    },
+    {
+      "usuario": "franco",
+      "actividad": "TALLER",
+      "fecha": "2026-10-09",
+      "titulo": "Taller de Git para nuevos",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-047"
+      ],
+      "monto_sugerido": 10,
+      "monto_aprobado": null,
+      "estado": "PENDIENTE",
+      "motivo_rechazo": null,
+      "resuelta_por": null,
+      "resuelta_en": null
+    }
+  ],
+  "otorgamientos": [
+    {
+      "usuario": "shamir",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-03-14",
+      "monto": 1,
+      "motivo": "Asistencia: Bienvenida SCESI 2026",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "TALLER",
+      "fecha": "2026-03-21",
+      "monto": 10,
+      "motivo": "Taller Python para IA",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "INVESTIGACION",
+      "fecha": "2026-04-25",
+      "monto": 15,
+      "motivo": "Investigación: Detección de plagio con embeddings",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-05-23",
+      "monto": 8,
+      "motivo": "Organización: Semana de la IA",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "COMPETENCIA",
+      "fecha": "2026-05-30",
+      "monto": 20,
+      "motivo": "1er lugar CTF interno SCESI",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "TALLER",
+      "fecha": "2026-06-27",
+      "monto": 10,
+      "motivo": "Taller de PyTorch",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "PROYECTO",
+      "fecha": "2026-07-25",
+      "monto": 15,
+      "motivo": "Chatbot de reglamentos FCyT",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "COMPETENCIA",
+      "fecha": "2026-09-12",
+      "monto": 20,
+      "motivo": "1er lugar Datathon UMSS",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-09-19",
+      "monto": 1,
+      "motivo": "Asistencia: Meetup Python Bolivia",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ORGANIZACION",
+      "fecha": "2026-10-05",
+      "monto": 5,
+      "motivo": "Organización: Club de lectura de papers",
+      "otorgado_por": "shamir"
+    }
+  ],
+  "premios_reclamados": [
+    {
+      "usuario": "saul",
+      "rango": "JUNIOR",
+      "fecha": "2026-05-10"
+    },
+    {
+      "usuario": "saul",
+      "rango": "MID",
+      "fecha": "2026-06-15"
+    },
+    {
+      "usuario": "shamir",
+      "rango": "JUNIOR",
+      "fecha": "2026-04-27"
+    },
+    {
+      "usuario": "isaac",
+      "rango": "JUNIOR",
+      "fecha": "2026-06-08"
+    },
+    {
+      "usuario": "steven",
+      "rango": "JUNIOR",
+      "fecha": "2026-05-31"
+    },
+    {
+      "usuario": "stefany",
+      "rango": "JUNIOR",
+      "fecha": "2026-06-21"
+    },
+    {
+      "usuario": "franco",
+      "rango": "JUNIOR",
+      "fecha": "2026-07-21"
+    }
+  ]
+}
