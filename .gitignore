@@ -1,0 +1,28 @@
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+
+# Chain state
+chain-data/
