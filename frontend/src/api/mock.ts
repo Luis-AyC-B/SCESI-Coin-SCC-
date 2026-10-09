@@ -2,10 +2,16 @@
 import seed from '@seed/data.json'
 import type {
   Actividad,
+  Decision,
   Me,
+  Miembro,
   Movimiento,
   NuevaPeticion,
+  NuevoOtorgamiento,
+  NuevoPremio,
+  PeticionPendiente,
   PremioReclamado,
+  PremioReclamadoAdmin,
   Rango,
   Ranking,
   RankingArea,
@@ -25,6 +31,7 @@ function currentHandle(): string {
 
 const peticiones: Peticion[] = [...seed.peticiones]
 const reclamos = [...seed.premios_reclamados]
+const otorgamientos = [...seed.otorgamientos]
 const actividades: Actividad[] = seed.actividades
 const rangos: Rango[] = [...seed.rangos].sort((a, b) => a.orden - b.orden)
 
@@ -42,7 +49,7 @@ function emisiones(handle: string) {
   const dePeticiones = peticiones
     .filter((p) => p.usuario === handle && p.estado === 'APROBADA')
     .map((p) => ({ actividad: p.actividad, fecha: p.resuelta_en ?? p.fecha, monto: p.monto_aprobado ?? 0 }))
-  const directas = seed.otorgamientos
+  const directas = otorgamientos
     .filter((g) => g.usuario === handle)
     .map((g) => ({ actividad: g.actividad, fecha: g.fecha, monto: g.monto }))
   return [...dePeticiones, ...directas]
@@ -113,7 +120,7 @@ export function getMyMovements(): Promise<Movimiento[]> {
         }
         return { id: `p${i}`, fecha: p.fecha, tipo: 'PENDIENTE', detalle: `Solicitud: ${p.titulo}`, monto: null }
       }),
-    ...seed.otorgamientos
+    ...otorgamientos
       .filter((g) => g.usuario === handle)
       .map((g, i): Movimiento => ({ id: `g${i}`, fecha: g.fecha, tipo: 'EMISIÓN', detalle: g.motivo, monto: g.monto })),
     ...reclamos
@@ -260,4 +267,166 @@ export function getAreaRanking(): Promise<Ranking<RankingArea>> {
     .sort((a, b) => b.scc - a.scc || a.area.localeCompare(b.area))
     .map((f, i) => ({ ...f, posicion: i + 1 }))
   return delay({ meses: meses.map((ym) => MESES[Number(ym.slice(5)) - 1]), filas })
+}
+
+// ---------- Administración (solo directiva) ----------
+
+function soloDirectiva(): Promise<never> | null {
+  const user = seed.usuarios.find((u) => u.handle === currentHandle())
+  return user?.rol === 'DIRECTIVA' ? null : Promise.reject(new Error('Solo la mesa directiva puede hacer esto.'))
+}
+
+// Orden de las decisiones tomadas en esta sesión, para listarlas primero dentro del mismo día
+const decididas = new WeakMap<object, number>()
+let secuencia = 0
+
+const nombreDe = (handle: string) => seed.usuarios.find((u) => u.handle === handle)?.nombre ?? handle
+const actividadDe = (codigo: string) => actividades.find((a) => a.codigo === codigo)!
+
+export function getMembers(): Promise<Miembro[]> {
+  return delay(
+    seed.usuarios
+      .map((u) => ({ handle: u.handle, nombre: u.nombre, area: u.area, wallet: fakeWallet(u.handle) }))
+      .sort((a, b) => a.nombre.localeCompare(b.nombre)),
+  )
+}
+
+export function getPendingRequests(): Promise<PeticionPendiente[]> {
+  return (
+    soloDirectiva() ??
+    delay(
+      peticiones
+        .map((p, id) => ({ p, id }))
+        .filter(({ p }) => p.estado === 'PENDIENTE')
+        .sort((a, b) => b.p.fecha.localeCompare(a.p.fecha))
+        .map(({ p, id }) => ({
+          id,
+          usuario: { handle: p.usuario, nombre: nombreDe(p.usuario) },
+          actividad: actividadDe(p.actividad),
+          fecha: p.fecha,
+          titulo: p.titulo,
+          evidencia: p.evidencia,
+          montoSugerido: p.monto_sugerido,
+        })),
+    )
+  )
+}
+
+function pendiente(id: number): Peticion | Error {
+  const p = peticiones[id]
+  if (!p) return new Error('La petición no existe.')
+  if (p.estado !== 'PENDIENTE') return new Error('La petición ya fue resuelta.')
+  return p
+}
+
+export function approveRequest(id: number, monto: number): Promise<void> {
+  const denied = soloDirectiva()
+  if (denied) return denied
+  const p = pendiente(id)
+  if (p instanceof Error) return Promise.reject(p)
+  if (!Number.isInteger(monto) || monto <= 0) return Promise.reject(new Error('El monto debe ser un entero mayor a 0.'))
+  Object.assign(p, { estado: 'APROBADA', monto_aprobado: monto, resuelta_por: currentHandle(), resuelta_en: hoy() })
+  decididas.set(p, ++secuencia)
+  return delay(undefined)
+}
+
+export function rejectRequest(id: number, motivo: string): Promise<void> {
+  const denied = soloDirectiva()
+  if (denied) return denied
+  const p = pendiente(id)
+  if (p instanceof Error) return Promise.reject(p)
+  Object.assign(p, {
+    estado: 'RECHAZADA',
+    motivo_rechazo: motivo.trim() || 'Sin motivo',
+    resuelta_por: currentHandle(),
+    resuelta_en: hoy(),
+  })
+  decididas.set(p, ++secuencia)
+  return delay(undefined)
+}
+
+export function getDecisions(): Promise<Decision[]> {
+  const resueltas = peticiones
+    .map((p, id) => ({ p, id }))
+    .filter(({ p }) => p.estado !== 'PENDIENTE')
+    .map(
+      ({ p, id }): Decision & { orden: number } => ({
+        id: `p${id}`,
+        fecha: p.resuelta_en ?? p.fecha,
+        miembro: nombreDe(p.usuario),
+        actividad: actividadDe(p.actividad),
+        detalle: p.titulo,
+        monto: p.monto_aprobado,
+        estado: p.estado as Decision['estado'],
+        motivo: p.motivo_rechazo,
+        orden: decididas.get(p) ?? 0,
+      }),
+    )
+  const directas = otorgamientos.map(
+    (g, i): Decision & { orden: number } => ({
+      id: `g${i}`,
+      fecha: g.fecha,
+      miembro: nombreDe(g.usuario),
+      actividad: actividadDe(g.actividad),
+      detalle: g.motivo,
+      monto: g.monto,
+      estado: 'APROBADA',
+      motivo: 'Otorgado directamente',
+      orden: decididas.get(g) ?? 0,
+    }),
+  )
+  const todas = [...resueltas, ...directas].sort((a, b) => b.fecha.localeCompare(a.fecha) || b.orden - a.orden)
+  return soloDirectiva() ?? delay(todas.map(({ orden: _, ...d }) => d))
+}
+
+export function grantCoins(data: NuevoOtorgamiento): Promise<void> {
+  const denied = soloDirectiva()
+  if (denied) return denied
+  if (!seed.usuarios.some((u) => u.handle === data.usuario)) return Promise.reject(new Error('El miembro no existe.'))
+  if (!actividades.some((a) => a.codigo === data.actividad)) return Promise.reject(new Error('La actividad no existe.'))
+  if (!Number.isInteger(data.monto) || data.monto <= 0) {
+    return Promise.reject(new Error('El monto debe ser un entero mayor a 0.'))
+  }
+  if (!data.motivo.trim()) return Promise.reject(new Error('El motivo es obligatorio.'))
+  const otorgamiento = { ...data, motivo: data.motivo.trim(), fecha: hoy(), otorgado_por: currentHandle() }
+  otorgamientos.push(otorgamiento)
+  decididas.set(otorgamiento, ++secuencia)
+  return delay(undefined)
+}
+
+export function createRank(data: NuevoPremio): Promise<void> {
+  const denied = soloDirectiva()
+  if (denied) return denied
+  const nombre = data.nombre.trim()
+  const ultimo = rangos[rangos.length - 1]
+  if (!nombre) return Promise.reject(new Error('El nombre es obligatorio.'))
+  if (rangos.some((r) => r.nombre.toLowerCase() === nombre.toLowerCase())) {
+    return Promise.reject(new Error('Ya existe un premio con ese nombre.'))
+  }
+  // La escalera es secuencial: un premio nuevo va después del último nivel
+  if (data.prerequisito !== ultimo.codigo) {
+    return Promise.reject(new Error(`El premio nuevo debe requerir el último nivel (${ultimo.nombre}).`))
+  }
+  if (!Number.isInteger(data.scc_requeridos) || data.scc_requeridos <= ultimo.scc_requeridos) {
+    return Promise.reject(new Error(`Debe requerir más de ${ultimo.scc_requeridos} SCC.`))
+  }
+  const codigo = nombre
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '_')
+  rangos.push({ codigo, nombre, scc_requeridos: data.scc_requeridos, prerequisito: ultimo.codigo, orden: ultimo.orden + 1 })
+  return delay(undefined)
+}
+
+export function getRecentClaims(limit = 5): Promise<PremioReclamadoAdmin[]> {
+  return (
+    soloDirectiva() ??
+    delay(
+      [...reclamos]
+        .sort((a, b) => b.fecha.localeCompare(a.fecha))
+        .slice(0, limit)
+        .map((c) => ({ miembro: nombreDe(c.usuario), rango: rangos.find((r) => r.codigo === c.rango)!, fecha: c.fecha })),
+    )
+  )
 }

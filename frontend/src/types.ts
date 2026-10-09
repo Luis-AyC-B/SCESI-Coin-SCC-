@@ -84,3 +84,50 @@ export interface Ranking<T> {
   meses: string[] // "Mar", "Abr", …
   filas: T[]
 }
+
+export interface Miembro {
+  handle: string
+  nombre: string
+  area: string
+  wallet: string
+}
+
+export interface PeticionPendiente {
+  id: number
+  usuario: { handle: string; nombre: string }
+  actividad: Actividad
+  fecha: string
+  titulo: string
+  evidencia: string[]
+  montoSugerido: number
+}
+
+export interface Decision {
+  id: string
+  fecha: string
+  miembro: string
+  actividad: Actividad
+  detalle: string
+  monto: number | null
+  estado: 'APROBADA' | 'RECHAZADA'
+  motivo: string | null
+}
+
+export interface NuevoOtorgamiento {
+  usuario: string
+  actividad: string
+  monto: number
+  motivo: string
+}
+
+export interface NuevoPremio {
+  nombre: string
+  scc_requeridos: number
+  prerequisito: string
+}
+
+export interface PremioReclamadoAdmin {
+  miembro: string
+  rango: Rango
+  fecha: string
+}
