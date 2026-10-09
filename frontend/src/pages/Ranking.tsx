@@ -7,6 +7,8 @@ import { seriesStyles } from '@/components/ranking/seriesStyle'
 import SegmentedControl from '@/components/ui/SegmentedControl'
 import { gestionActual } from '@/lib/format'
 
+const CHART_TOP = 5
+
 type Mode = 'individual' | 'area'
 type View = 'chart' | 'table'
 
@@ -54,15 +56,17 @@ export default function Ranking() {
       {mode === 'individual' && individual.data && (() => {
         const { meses, filas } = individual.data
         if (view === 'table') return <IndividualTable filas={filas} />
+        // Más de 6 líneas en grises no se distinguen: el gráfico muestra el top 5 y a ti; la tabla, a todos
+        const visibles = filas.filter((f) => f.posicion <= CHART_TOP || f.esYo)
         const styles = seriesStyles(
-          filas.map((f) => f.handle),
-          filas.find((f) => f.esYo)?.handle,
+          visibles.map((f) => f.handle),
+          visibles.find((f) => f.esYo)?.handle,
         )
         return (
           <RankingChart
-            title="Evolución individual"
+            title={`Evolución individual · top ${CHART_TOP}`}
             meses={meses}
-            series={filas.map((f) => ({
+            series={visibles.map((f) => ({
               key: f.handle,
               name: f.esYo ? `${f.nombre} (tú)` : f.nombre,
               posicion: f.posicion,
