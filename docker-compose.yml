@@ -41,7 +41,9 @@ services:
         condition: service_started
 
   frontend:
-    build: ./frontend
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
     environment:
       VITE_API_URL: http://localhost:8000
     ports:

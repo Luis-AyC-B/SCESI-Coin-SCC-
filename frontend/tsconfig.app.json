@@ -15,7 +15,8 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": { "@/*": ["./src/*"] },
+    "resolveJsonModule": true,
+    "paths": { "@/*": ["./src/*"], "@seed/*": ["../seed/*"] },
 
     /* Linting */
     "noUnusedLocals": true,
