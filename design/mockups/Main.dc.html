@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mi panel</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EFEFEF}
+a{color:#C1363D}a:hover{color:#8E2228}
+</style>
+</helmet>
+<div style="min-height: 980px; display: flex; flex-direction: column; background: #EFEFEF; color: #1E1E1E; font-family: 'IBM Plex Sans', sans-serif">
+<header style="flex: none; background: #1E1E1E; border-bottom: 3px solid #C1363D">
+<div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="font-weight: 700; font-size: 22px; color: #FFFFFF; letter-spacing: -0.01em">SCESI <span style="color: #E5484F">Coin</span></div>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px; font-size: 15px">
+<a href="Premios.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Premios</a>
+<a href="Ranking.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Ranking</a>
+<a href="Explorer.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Explorador</a>
+<a href="Admin.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Admin</a>
+</nav>
+<a href="Main.dc.html" aria-label="Mi panel" style="display: flex; align-items: center; gap: 10px; font-size: 14px; text-decoration: none">
+<div style="text-align: right">
+<div style="font-weight: 600; color: #FFFFFF">Franco</div>
+<div style="font-family: 'IBM Plex Mono', monospace; color: #B5B5B5; font-size: 13px">0x7a3f…c91e</div>
+</div>
+<img src="/_blob/43c8eaafe86585d370103f68b512e027" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 3px solid #FFFFFF; box-shadow: 0 0 0 2px #C1363D">
+</a>
+</div>
+</header>
+
+<main style="flex: 1 0 auto; width: 100%; box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch">
+<section style="flex: 999 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px">
+<div style="display: flex; align-items: center; gap: 16px; flex: 1 1 260px; min-width: 0">
+<img src="/_blob/43c8eaafe86585d370103f68b512e027" alt="Foto de perfil de Franco" style="width: 88px; height: 88px; flex: none; border-radius: 50%; object-fit: cover; border: 3px solid #C1363D">
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 600; color: #C1363D">Franco</div>
+<div style="font-size: 15px">Área Backend</div>
+<div style="display: flex; align-items: center; gap: 8px; margin-top: 4px">
+<span style="font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 4px; background: #1E1E1E; color: #FFFFFF; letter-spacing: 0.04em">JUNIOR</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #3D3D3D">#4 en la gestión</span>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; font-size: 14px; color: #3D3D3D"><span>Próximo rango: <b style="color: #1E1E1E">Mid</b></span><span style="font-family: 'IBM Plex Mono', monospace">45 / 50 SCC</span></div>
+<div style="height: 8px; border-radius: 4px; background: #E3E3E3">
+<div style="width: 90%; height: 8px; border-radius: 4px; background: #C1363D"></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; text-align: center">
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">3</div><div style="font-size: 14px; color: #3D3D3D">Talleres</div></div>
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">1</div><div style="font-size: 14px; color: #3D3D3D">Eventos</div></div>
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">0</div><div style="font-size: 14px; color: #3D3D3D">Competencias</div></div>
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">0</div><div style="font-size: 14px; color: #3D3D3D">Proyectos</div></div>
+</div>
+</div>
+</section>
+
+<section style="flex: 1 1 280px; min-width: 0; background: #1E1E1E; color: #FFFFFF; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-size: 14px; color: #B5B5B5">SCC ganados</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #B5B5B5">0x7a3f…c91e</span>
+</div>
+<div style="display: flex; align-items: baseline; gap: 8px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 48px; font-weight: 500; letter-spacing: -0.02em">45</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #F28B90">SCC</span>
+</div>
+<button onClick="{{openReq}}" style="font: inherit; font-size: 15px; font-weight: 600; min-height: 48px; border: none; border-radius: 8px; background: #C1363D; color: #FFFFFF; cursor: pointer">Solicitar coins</button>
+</section>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-radius: 10px; background: #F4F4F4; border: 1px solid #BDBDBD; color: #1E1E1E; font-size: 15px">
+<span>Solicitud enviada. La directiva la revisará y, si se aprueba, los SCC llegarán en un nuevo bloque.</span>
+<button onClick="{{dismiss}}" aria-label="Cerrar aviso" style="width: 44px; height: 44px; flex: none; border: none; background: transparent; color: #1E1E1E; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+</sc-if>
+
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px">
+<h1 style="margin: 0; font-size: 22px">Historial de transacciones</h1>
+<div style="display: flex; gap: 4px; font-size: 14px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+<button onClick="{{f.pick}}" style="font: inherit; font-size: 14px; min-height: 40px; padding: 8px 12px; border-radius: 6px; border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; cursor: pointer">{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="text-align: left; color: #3D3D3D; font-size: 13px">
+<th style="padding: 8px 12px 8px 0; font-weight: 500">Fecha</th>
+<th style="padding: 8px 12px; font-weight: 500">Tipo</th>
+<th style="padding: 8px 12px; font-weight: 500">Detalle</th>
+<th style="padding: 8px 0 8px 12px; font-weight: 500; text-align: right">Monto</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{txs}}" as="t" hint-placeholder-count="8">
+<tr style="border-top: 1px solid #E3E3E3">
+<td style="padding: 12px 12px 12px 0; color: #3D3D3D; white-space: nowrap">{{t.date}}</td>
+<td style="padding: 12px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 3px 8px; border-radius: 4px; background: {{t.typeBg}}; color: {{t.typeFg}}">{{t.type}}</span></td>
+<td style="padding: 12px; font-weight: 500">{{t.detail}}</td>
+<td style="padding: 12px 0 12px 12px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: {{t.amountColor}}">{{t.amount}}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<footer style="flex: none; border-top: 1px solid #D2D2D2; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<img src="/_blob/184a39ff5019c4ecab49ce8ce9235479" alt="SCESI UMSS" style="height: 48px; width: auto; display: block">
+<span style="font-size: 14px; color: #3D3D3D">Sociedad Científica de Estudiantes de Sistemas e Informática · UMSS</span>
+</div>
+</footer>
+
+<sc-if value="{{reqOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; background: rgba(30, 30, 30, 0.55); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="req-title" style="width: 100%; max-width: 480px; background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25)">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #E3E3E3">
+<div>
+<h2 id="req-title" style="margin: 0; font-size: 20px">Solicitar coins</h2>
+</div>
+<button onClick="{{closeReq}}" aria-label="Cerrar" style="width: 44px; height: 44px; border: none; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+<div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="ra" style="font-size: 14px; font-weight: 600">Actividad</label>
+<select id="ra" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+<option>Dictar un taller</option>
+<option>Organizar un evento</option>
+<option>Competir por la SCESI</option>
+<option>Proyecto del área</option>
+</select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="rd" style="font-size: 14px; font-weight: 600">Fecha</label>
+<input id="rd" type="date" style="font: inherit; font-size: 15px; padding: 11px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="rt" style="font-size: 14px; font-weight: 600">Título</label>
+<input id="rt" placeholder="Ej. Taller de Git para nuevos" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="re" style="font-size: 14px; font-weight: 600">Evidencia</label>
+<textarea id="re" rows="3" placeholder="Link a fotos, repo, lista de asistentes…" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E; resize: vertical"></textarea>
+</div>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px 20px">
+<button onClick="{{closeReq}}" style="font: inherit; font-size: 15px; padding: 12px 20px; border: 1px solid #BDBDBD; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer">Cancelar</button>
+<button onClick="{{sendReq}}" style="font: inherit; font-weight: 600; font-size: 15px; padding: 12px 20px; border: none; border-radius: 8px; background: #C1363D; color: #FFFFFF; cursor: pointer">Enviar solicitud</button>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":980}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { reqOpen: false, sent: false, filter: 'all' };
+  }
+  renderVals() {
+    var self = this;
+    var mint = { type: 'EMISIÓN', typeBg: '#FBE9EA', typeFg: '#C1363D', amountColor: '#C1363D', kind: 'in' };
+    var redeem = { type: 'CANJE', typeBg: '#E3E3E3', typeFg: '#1E1E1E', amountColor: '#1E1E1E', kind: 'out' };
+    var pending = { type: 'PENDIENTE', typeBg: '#E3E3E3', typeFg: '#1E1E1E', amountColor: '#3D3D3D', kind: 'pending' };
+    var all = [
+      Object.assign({ date: 'Hoy', detail: 'Solicitud: Taller de Git para nuevos', amount: '—' }, pending),
+      Object.assign({ date: '07 oct', detail: 'Taller: Docker desde cero', amount: '+15' }, mint),
+      Object.assign({ date: '04 oct', detail: 'SCESI Init — organización', amount: '+10' }, mint),
+      Object.assign({ date: '20 jul', detail: 'Taller: FastAPI básico', amount: '+10' }, mint),
+      Object.assign({ date: '10 may', detail: 'Taller: Git y GitHub', amount: '+10' }, mint)
+    ];
+    var f = this.state.filter;
+    var opts = [['all', 'Todas'], ['in', 'Ingresos'], ['pending', 'Pendientes']];
+    return {
+      txs: f === 'all' ? all : all.filter(function (t) { return t.kind === f; }),
+      filters: opts.map(function (o) {
+        var on = o[0] === f;
+        return {
+          label: o[1],
+          bg: on ? '#1E1E1E' : 'transparent',
+          fg: on ? '#FFFFFF' : '#1E1E1E',
+          border: on ? '#1E1E1E' : '#BDBDBD',
+          pick: function () { self.setState({ filter: o[0] }); }
+        };
+      }),
+      reqOpen: this.state.reqOpen,
+      sent: this.state.sent,
+      openReq: function () { self.setState({ reqOpen: true }); },
+      closeReq: function () { self.setState({ reqOpen: false }); },
+      sendReq: function () { self.setState({ reqOpen: false, sent: true }); },
+      dismiss: function () { self.setState({ sent: false }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ranking</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EFEFEF}
+a{color:#C1363D}a:hover{color:#8E2228}
+</style>
+</helmet>
+<div style="min-height: 1100px; display: flex; flex-direction: column; background: #EFEFEF; color: #1E1E1E; font-family: 'IBM Plex Sans', sans-serif">
+<header style="flex: none; background: #1E1E1E; border-bottom: 3px solid #C1363D">
+<div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="font-weight: 700; font-size: 22px; color: #FFFFFF; letter-spacing: -0.01em">SCESI <span style="color: #E5484F">Coin</span></div>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px; font-size: 15px">
+<a href="Premios.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Premios</a>
+<a href="Ranking.dc.html" style="padding: 10px 16px; border-radius: 6px; background: #C1363D; color: #FFFFFF; font-weight: 600; text-decoration: none">Ranking</a>
+<a href="Explorer.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Explorador</a>
+<a href="Admin.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Admin</a>
+</nav>
+<a href="Main.dc.html" aria-label="Mi panel" style="display: flex; align-items: center; gap: 10px; font-size: 14px; text-decoration: none">
+<div style="text-align: right">
+<div style="font-weight: 600; color: #FFFFFF">Franco</div>
+<div style="font-family: 'IBM Plex Mono', monospace; color: #B5B5B5; font-size: 13px">0x7a3f…c91e</div>
+</div>
+<img src="/_blob/43c8eaafe86585d370103f68b512e027" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #C1363D">
+</a>
+</div>
+</header>
+
+<main style="flex: 1 0 auto; width: 100%; box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #3D3D3D; text-transform: uppercase; letter-spacing: 0.08em">Gestión 2026 · SCC ganados acumulados</div>
+<h1 style="margin: 6px 0 0; font-size: 32px; letter-spacing: -0.02em">Ranking</h1>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div role="tablist" aria-label="Tipo de ranking" style="display: flex; padding: 4px; border-radius: 10px; background: #E3E3E3">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="2">
+<button role="tab" aria-selected="{{m.on}}" onClick="{{m.pick}}" style="font: inherit; font-size: 15px; font-weight: 600; min-height: 44px; padding: 8px 16px; border: none; border-radius: 8px; background: {{m.bg}}; color: {{m.fg}}; cursor: pointer">{{m.label}}</button>
+</sc-for>
+</div>
+<div role="tablist" aria-label="Vista" style="display: flex; padding: 4px; border-radius: 10px; background: #E3E3E3">
+<sc-for list="{{views}}" as="v" hint-placeholder-count="2">
+<button role="tab" aria-selected="{{v.on}}" onClick="{{v.pick}}" style="font: inherit; font-size: 15px; font-weight: 600; min-height: 44px; padding: 8px 16px; border: none; border-radius: 8px; background: {{v.bg}}; color: {{v.fg}}; cursor: pointer">{{v.label}}</button>
+</sc-for>
+</div>
+</div>
+</div>
+
+<sc-if value="{{isChart}}" hint-placeholder-val="{{true}}">
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; font-size: 20px">{{chartTitle}}</h2>
+</div>
+<div style="width: 100%; overflow-x: auto">
+<svg viewBox="0 0 900 380" role="img" aria-label="{{chartTitle}}" style="display: block; width: 100%; min-width: 640px; height: auto">
+<sc-for list="{{yTicks}}" as="t" hint-placeholder-count="5">
+<line x1="56" x2="880" y1="{{t.y}}" y2="{{t.y}}" stroke="#E3E3E3" stroke-width="1"></line>
+<text x="46" y="{{t.ty}}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3D3D3D">{{t.label}}</text>
+</sc-for>
+<sc-for list="{{xTicks}}" as="x" hint-placeholder-count="8">
+<text x="{{x.x}}" y="366" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#3D3D3D">{{x.label}}</text>
+</sc-for>
+<sc-for list="{{series}}" as="s" hint-placeholder-count="5">
+<g>
+<polyline points="{{s.points}}" fill="none" stroke="{{s.color}}" stroke-width="{{s.width}}" stroke-linejoin="round" stroke-linecap="round" opacity="{{s.opacity}}"></polyline>
+<sc-for list="{{s.dots}}" as="d" hint-placeholder-count="8">
+<circle cx="{{d.x}}" cy="{{d.y}}" r="{{s.r}}" fill="#FFFFFF" stroke="{{s.color}}" stroke-width="2" opacity="{{s.opacity}}"></circle>
+</sc-for>
+</g>
+</sc-for>
+</svg>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{series}}" as="s" hint-placeholder-count="5">
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #E3E3E3; border-radius: 8px; background: {{s.chipBg}}; font-size: 14px">
+<span style="width: 14px; height: 3px; border-radius: 2px; background: {{s.color}}"></span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600">{{s.pos}}</span>
+<span style="font-weight: {{s.weight}}">{{s.name}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; color: #3D3D3D">{{s.last}} SCC</span>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{isIndTable}}" hint-placeholder-val="{{false}}">
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; overflow: hidden">
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="background: #1E1E1E; color: #FFFFFF; text-align: center; font-size: 13px">
+<th style="padding: 12px 8px; font-weight: 600; width: 48px">#</th>
+<th style="padding: 12px; font-weight: 600; text-align: left">Miembro</th>
+<th style="padding: 12px 8px; font-weight: 600">Área</th>
+<th style="padding: 12px 8px; font-weight: 600">Rango</th>
+<th style="padding: 12px 8px; font-weight: 600" title="Talleres">T</th>
+<th style="padding: 12px 8px; font-weight: 600" title="Eventos">E</th>
+<th style="padding: 12px 8px; font-weight: 600" title="Competencias">C</th>
+<th style="padding: 12px 8px; font-weight: 600" title="Proyectos">P</th>
+<th style="padding: 12px; font-weight: 600; text-align: right">SCC</th>
+<th style="padding: 12px; font-weight: 600; text-align: right">Δ semana</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{people}}" as="r" hint-placeholder-count="10">
+<tr style="background: {{r.bg}}; border-top: 1px solid #E3E3E3; text-align: center">
+<td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace; color: #3D3D3D">{{r.pos}}</td>
+<td style="padding: 10px 12px; text-align: left; font-family: 'IBM Plex Mono', monospace; font-weight: 600">{{r.handle}}</td>
+<td style="padding: 10px 8px">{{r.area}}</td>
+<td style="padding: 10px 8px"><span style="font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #1E1E1E; color: #FFFFFF; letter-spacing: 0.04em; white-space: nowrap">{{r.rank}}</span></td>
+<td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace">{{r.t}}</td>
+<td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace">{{r.e}}</td>
+<td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace">{{r.c}}</td>
+<td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace">{{r.p}}</td>
+<td style="padding: 10px 12px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-weight: 600">{{r.scc}}</td>
+<td style="padding: 10px 12px; text-align: right; font-family: 'IBM Plex Mono', monospace; color: {{r.deltaColor}}">{{r.delta}}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+<div style="padding: 12px 16px; border-top: 1px solid #E3E3E3; font-size: 14px; color: #3D3D3D">T talleres · E eventos · C competencias · P proyectos · Rangos: Junior → Mid (50) → Llave SCESI (60) → Senior (100)</div>
+</section>
+</sc-if>
+
+<sc-if value="{{isAreaTable}}" hint-placeholder-val="{{false}}">
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; overflow: hidden">
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 640px; border-collapse: collapse; font-size: 15px">
+<thead>
+<tr style="background: #1E1E1E; color: #FFFFFF; text-align: right; font-size: 13px">
+<th style="padding: 12px 8px; font-weight: 600; width: 48px; text-align: center">#</th>
+<th style="padding: 12px; font-weight: 600; text-align: left">Área</th>
+<th style="padding: 12px; font-weight: 600">Miembros</th>
+<th style="padding: 12px; font-weight: 600">SCC total</th>
+<th style="padding: 12px; font-weight: 600">Promedio</th>
+<th style="padding: 12px; font-weight: 600">Δ mes</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{areas}}" as="a" hint-placeholder-count="3">
+<tr style="border-top: 1px solid #E3E3E3; text-align: right">
+<td style="padding: 14px 8px; text-align: center; font-family: 'IBM Plex Mono', monospace; color: #3D3D3D">{{a.pos}}</td>
+<td style="padding: 14px 12px; text-align: left"><span style="display: inline-flex; align-items: center; gap: 10px; font-weight: 600"><span style="width: 14px; height: 3px; border-radius: 2px; background: {{a.color}}"></span>{{a.name}}</span></td>
+<td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace">{{a.members}}</td>
+<td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-weight: 600">{{a.total}}</td>
+<td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace">{{a.avg}}</td>
+<td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; color: #1E1E1E">{{a.delta}}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+</sc-if>
+</main>
+<footer style="flex: none; border-top: 1px solid #D2D2D2; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<img src="/_blob/184a39ff5019c4ecab49ce8ce9235479" alt="SCESI UMSS" style="height: 48px; width: auto; display: block">
+<span style="font-size: 14px; color: #3D3D3D">Sociedad Científica de Estudiantes de Sistemas e Informática · UMSS</span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1100}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'ind', view: 'chart' };
+  }
+  renderVals() {
+    var self = this;
+    var months = ['Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct'];
+    var palette = ['#1E1E1E', '#6E6E6E', '#A8A8A8', '#C1363D', '#D4D4D4'];
+    var people = [
+      { h: 'Luis', area: 'Ciberseguridad', rank: 'Senior', v: [0, 10, 25, 40, 60, 80, 100, 120], tecp: [3, 2, 4, 1], d: 20 },
+      { h: 'Saul', area: 'Mobile', rank: 'Llave SCESI', v: [0, 5, 15, 25, 40, 50, 65, 75], tecp: [2, 3, 1, 2], d: 0 },
+      { h: 'Willy', area: 'IA', rank: 'Mid', v: [0, 0, 10, 20, 30, 40, 45, 55], tecp: [4, 1, 0, 2], d: 10 },
+      { h: 'Franco', area: 'Backend', rank: 'Junior', v: [0, 0, 10, 10, 20, 20, 20, 45], tecp: [3, 1, 0, 0], d: 25, me: true }
+    ];
+    var areas = [
+      { name: 'Ciberseguridad', color: '#1E1E1E', members: 12, v: [20, 60, 120, 190, 260, 350, 430, 500], d: 70 },
+      { name: 'Backend', color: '#C1363D', members: 18, v: [10, 50, 100, 160, 220, 290, 360, 420], d: 60 },
+      { name: 'Mobile', color: '#6E6E6E', members: 10, v: [10, 40, 90, 140, 200, 260, 330, 380], d: 50 },
+      { name: 'IA', color: '#A8A8A8', members: 9, v: [5, 30, 60, 100, 150, 190, 240, 290], d: 50 }
+    ];
+    var ind = this.state.mode === 'ind';
+    var chart = this.state.view === 'chart';
+    var maxY = ind ? 150 : 550;
+    var step = ind ? 25 : 100;
+    var X0 = 56, X1 = 880, Y0 = 340, Y1 = 20;
+    var px = function (i) { return X0 + 24 + i * ((X1 - X0 - 48) / (months.length - 1)); };
+    var py = function (v) { return Y0 - (v / maxY) * (Y0 - Y1); };
+    var yTicks = [];
+    for (var t = 0; t <= maxY; t += step) { yTicks.push({ y: py(t), ty: py(t) + 4, label: String(t) }); }
+    var build = function (name, vals, color, me, pos) {
+      var dots = vals.map(function (v, i) { return { x: px(i), y: py(v) }; });
+      return {
+        name: name, color: color, pos: '#' + pos, last: vals[vals.length - 1],
+        points: dots.map(function (d) { return d.x + ',' + d.y; }).join(' '),
+        dots: dots,
+        width: me ? 4 : 2.5, r: me ? 5 : 4, opacity: 1,
+        weight: me ? '700' : '500',
+        chipBg: me ? '#FBE9EA' : '#FFFFFF'
+      };
+    };
+    var series = ind
+      ? people.slice(0, 5).map(function (p, i) { return build(p.me ? p.h + ' (tú)' : p.h, p.v, palette[i], p.me, i + 1); })
+      : areas.map(function (a, i) { return build(a.name, a.v, a.color, false, i + 1); });
+    var pill = function (on) { return { bg: on ? '#1E1E1E' : 'transparent', fg: on ? '#FFFFFF' : '#1E1E1E' }; };
+    return {
+      modes: [['ind', 'Individual'], ['area', 'Por áreas']].map(function (o) {
+        var on = self.state.mode === o[0];
+        return Object.assign({ label: o[1], on: on ? 'true' : 'false', pick: function () { self.setState({ mode: o[0] }); } }, pill(on));
+      }),
+      views: [['chart', 'Gráfico'], ['table', 'Tabla']].map(function (o) {
+        var on = self.state.view === o[0];
+        return Object.assign({ label: o[1], on: on ? 'true' : 'false', pick: function () { self.setState({ view: o[0] }); } }, pill(on));
+      }),
+      isChart: chart,
+      isIndTable: !chart && ind,
+      isAreaTable: !chart && !ind,
+      chartTitle: ind ? 'Evolución individual' : 'Evolución por área',
+      yTicks: yTicks,
+      xTicks: months.map(function (m, i) { return { x: px(i), label: m }; }),
+      series: series,
+      people: people.map(function (p, i) {
+        var d = p.d;
+        return {
+          pos: String(i + 1), handle: p.me ? p.h + ' (tú)' : p.h, area: p.area, rank: p.rank.toUpperCase(),
+          t: p.tecp[0] || '·', e: p.tecp[1] || '·', c: p.tecp[2] || '·', p: p.tecp[3] || '·',
+          scc: String(p.v[p.v.length - 1]),
+          delta: d > 0 ? '+' + d : (d < 0 ? '−' + Math.abs(d) : '0'),
+          deltaColor: d > 0 ? '#1E1E1E' : (d < 0 ? '#C1363D' : '#8A8A8A'),
+          bg: p.me ? '#FBE9EA' : (i % 2 ? '#F7F7F7' : '#FFFFFF')
+        };
+      }),
+      areas: areas.map(function (a, i) {
+        var total = a.v[a.v.length - 1];
+        return { pos: String(i + 1), name: a.name, color: a.color, members: a.members, total: total, avg: (total / a.members).toFixed(1), delta: '+' + a.d };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

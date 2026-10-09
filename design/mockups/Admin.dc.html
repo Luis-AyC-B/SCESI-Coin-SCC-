@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Administración</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EFEFEF}
+a{color:#C1363D}a:hover{color:#8E2228}
+</style>
+</helmet>
+<div style="min-height: 1640px; display: flex; flex-direction: column; background: #EFEFEF; color: #1E1E1E; font-family: 'IBM Plex Sans', sans-serif">
+<header style="flex: none; background: #1E1E1E; border-bottom: 3px solid #C1363D">
+<div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="font-weight: 700; font-size: 22px; color: #FFFFFF; letter-spacing: -0.01em">SCESI <span style="color: #E5484F">Coin</span></div>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px; font-size: 15px">
+<a href="Premios.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Premios</a>
+<a href="Ranking.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Ranking</a>
+<a href="Explorer.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Explorador</a>
+<a href="Admin.dc.html" style="padding: 10px 16px; border-radius: 6px; background: #C1363D; color: #FFFFFF; font-weight: 600; text-decoration: none">Admin</a>
+</nav>
+<a href="Main.dc.html" aria-label="Mi panel" style="display: flex; align-items: center; gap: 10px; font-size: 14px; text-decoration: none">
+<div style="text-align: right">
+<div style="font-weight: 600; color: #FFFFFF">Franco</div>
+<div style="font-family: 'IBM Plex Mono', monospace; color: #B5B5B5; font-size: 13px">0x7a3f…c91e</div>
+</div>
+<img src="/_blob/43c8eaafe86585d370103f68b512e027" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #C1363D">
+</a>
+</div>
+</header>
+
+<main style="flex: 1 0 auto; width: 100%; box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-direction: column; gap: 24px">
+<div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #3D3D3D; text-transform: uppercase; letter-spacing: 0.08em">Gestión 2026</div>
+<h1 style="margin: 6px 0 0; font-size: 32px; letter-spacing: -0.02em">Administración</h1>
+</div>
+
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px">
+<div>
+<h2 style="margin: 0; font-size: 20px">Peticiones de coins</h2>
+</div>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 4px 8px; border-radius: 4px; background: #E3E3E3; color: #1E1E1E">{{pendingLabel}}</span>
+</div>
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="padding: 28px 0; text-align: center; color: #3D3D3D; border-top: 1px solid #E3E3E3">No hay peticiones pendientes.</div>
+</sc-if>
+<sc-for list="{{requests}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid #E3E3E3">
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: {{r.color}}">{{r.handle}}</span>
+<span style="font-size: 13px; padding: 2px 8px; border-radius: 4px; background: #E3E3E3; color: #1E1E1E">{{r.activity}}</span>
+<span style="font-size: 14px; color: #3D3D3D">{{r.when}}</span>
+</div>
+<div style="font-weight: 500; font-size: 15px">{{r.title}}</div>
+<a href="#" style="font-size: 14px">Ver evidencia</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<label for="{{r.inputId}}" style="font-size: 14px; color: #3D3D3D">Monto (SCC)</label>
+<input id="{{r.inputId}}" value="{{r.amount}}" onChange="{{r.setAmount}}" inputMode="numeric" style="width: 88px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; padding: 10px 12px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #C1363D">
+</div>
+<div style="display: flex; gap: 8px; align-self: flex-end">
+<button onClick="{{r.approve}}" style="font: inherit; font-size: 14px; font-weight: 600; padding: 10px 16px; min-height: 44px; border: none; border-radius: 6px; background: #C1363D; color: #FFFFFF; cursor: pointer">Aprobar</button>
+<button onClick="{{r.reject}}" style="font: inherit; font-size: 14px; padding: 10px 16px; min-height: 44px; border: 1px solid #BDBDBD; border-radius: 6px; background: transparent; color: #1E1E1E; cursor: pointer">Rechazar</button>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px">
+<h2 style="margin: 0; font-size: 20px">Historial de transacciones</h2>
+<div style="display: flex; gap: 4px">
+<sc-for list="{{histFilters}}" as="f" hint-placeholder-count="3">
+<button onClick="{{f.pick}}" style="font: inherit; font-size: 14px; min-height: 40px; padding: 8px 12px; border-radius: 6px; border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; cursor: pointer">{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="text-align: left; color: #3D3D3D; font-size: 13px">
+<th style="padding: 8px 12px 8px 0; font-weight: 500">Fecha</th>
+<th style="padding: 8px 12px; font-weight: 500">Miembro</th>
+<th style="padding: 8px 12px; font-weight: 500">Actividad</th>
+<th style="padding: 8px 12px; font-weight: 500">Detalle</th>
+<th style="padding: 8px 12px; font-weight: 500; text-align: right">Monto</th>
+<th style="padding: 8px 12px; font-weight: 500">Estado</th>
+<th style="padding: 8px 0 8px 12px; font-weight: 500">Motivo</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{history}}" as="h" hint-placeholder-count="6">
+<tr style="border-top: 1px solid #E3E3E3">
+<td style="padding: 12px 12px 12px 0; color: #3D3D3D; white-space: nowrap">{{h.date}}</td>
+<td style="padding: 12px; font-family: 'IBM Plex Mono', monospace; font-weight: 600">{{h.handle}}</td>
+<td style="padding: 12px">{{h.activity}}</td>
+<td style="padding: 12px; font-weight: 500">{{h.title}}</td>
+<td style="padding: 12px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: {{h.amountColor}}">{{h.amount}}</td>
+<td style="padding: 12px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 3px 8px; border-radius: 4px; background: {{h.badgeBg}}; color: {{h.badgeFg}}">{{h.status}}</span></td>
+<td style="padding: 12px 0 12px 12px; color: #3D3D3D">{{h.reason}}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<section style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div>
+<h2 style="margin: 0; font-size: 20px">Otorgar coins directamente</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="m" style="font-size: 14px; font-weight: 600">Miembro</label>
+<input id="m" value="Franco · 0x7a3f…c91e" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="act" style="font-size: 14px; font-weight: 600">Actividad</label>
+<select id="act" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+<option>Dictar un taller</option>
+<option>Organizar un evento</option>
+<option>Competir por la SCESI</option>
+<option>Proyecto del área</option>
+</select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="cns" style="font-size: 14px; font-weight: 600">Monto (SCC)</label>
+<input id="cns" value="15" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #C1363D">
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="ev" style="font-size: 14px; font-weight: 600">Motivo</label>
+<textarea id="ev" rows="3" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E; resize: vertical">Taller "Docker desde cero"</textarea>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button style="font: inherit; font-weight: 600; font-size: 15px; padding: 12px 20px; border: none; border-radius: 8px; background: #C1363D; color: #FFFFFF; cursor: pointer">Firmar y emitir</button>
+<button style="font: inherit; font-size: 15px; padding: 12px 20px; border: 1px solid #BDBDBD; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer">Cancelar</button>
+</div>
+</section>
+
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px">
+<h2 style="margin: 0; font-size: 20px">Premios</h2>
+<button onClick="{{openAdd}}" style="font: inherit; font-size: 14px; font-weight: 600; padding: 10px 14px; min-height: 44px; border: none; border-radius: 6px; background: #C1363D; color: #FFFFFF; cursor: pointer">+ Agregar premio</button>
+</div>
+<sc-for list="{{prizes}}" as="p" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid #E3E3E3; font-size: 15px">
+<span style="font-weight: 500">{{p.name}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; color: #C1363D">{{p.cost}}</span>
+</div>
+</sc-for>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px">
+<h2 style="margin: 0 0 8px; font-size: 20px">Premios reclamados</h2>
+<sc-for list="{{redeems}}" as="c" hint-placeholder-count="3">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #E3E3E3; font-size: 15px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: {{c.color}}">{{c.handle}}</span>
+<span style="flex: 1 1 120px; font-weight: 500">{{c.item}}</span>
+<span style="font-size: 14px; color: #3D3D3D">{{c.when}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; color: #3D3D3D">{{c.cost}}</span>
+</div>
+</sc-for>
+</section>
+</div>
+</div>
+</main>
+<footer style="flex: none; border-top: 1px solid #D2D2D2; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<img src="/_blob/184a39ff5019c4ecab49ce8ce9235479" alt="SCESI UMSS" style="height: 48px; width: auto; display: block">
+<span style="font-size: 14px; color: #3D3D3D">Sociedad Científica de Estudiantes de Sistemas e Informática · UMSS</span>
+</div>
+</footer>
+
+<sc-if value="{{rejectOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; background: rgba(30, 30, 30, 0.55); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="rej-title" style="width: 100%; max-width: 480px; background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25)">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #E3E3E3">
+<h2 id="rej-title" style="margin: 0; font-size: 20px">Rechazar petición</h2>
+<button onClick="{{closeReject}}" aria-label="Cerrar" style="width: 44px; height: 44px; border: none; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+<div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="padding: 14px 16px; border-radius: 8px; background: #F4F4F4; border: 1px solid #E3E3E3; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600">{{rejectHandle}}</span>
+<span style="font-size: 13px; padding: 2px 8px; border-radius: 4px; background: #E3E3E3; color: #1E1E1E">{{rejectActivity}}</span>
+</div>
+<div style="font-weight: 500; font-size: 15px">{{rejectTitle}}</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="rj" style="font-size: 14px; font-weight: 600">Motivo del rechazo</label>
+<textarea id="rj" rows="3" value="{{rejectReason}}" onChange="{{setReason}}" placeholder="Ej. Falta evidencia del evento" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E; resize: vertical"></textarea>
+</div>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px 20px">
+<button onClick="{{closeReject}}" style="font: inherit; font-size: 15px; padding: 12px 20px; border: 1px solid #BDBDBD; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer">Cancelar</button>
+<button onClick="{{confirmReject}}" style="font: inherit; font-weight: 600; font-size: 15px; padding: 12px 20px; border: none; border-radius: 8px; background: #1E1E1E; color: #FFFFFF; cursor: pointer">Rechazar petición</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{addOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; background: rgba(22, 24, 29, 0.55); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="add-title" style="width: 100%; max-width: 480px; background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25)">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #E3E3E3">
+<h2 id="add-title" style="margin: 0; font-size: 20px">Agregar premio</h2>
+<button onClick="{{closeAdd}}" aria-label="Cerrar" style="width: 44px; height: 44px; border: none; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+<div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="pn" style="font-size: 14px; font-weight: 600">Nombre del premio</label>
+<input id="pn" value="{{draftName}}" onChange="{{setName}}" placeholder="Ej. Polera SCESI" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="pc" style="font-size: 14px; font-weight: 600">SCC requeridos</label>
+<input id="pc" value="{{draftCost}}" onChange="{{setCost}}" inputMode="numeric" placeholder="0" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #C1363D">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="ps" style="font-size: 14px; font-weight: 600">Requiere</label>
+<select id="ps" style="font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+<option>Senior</option>
+<option>Llave SCESI</option>
+<option>Mid</option>
+<option>Junior</option>
+</select>
+</div>
+</div>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px 20px">
+<button onClick="{{closeAdd}}" style="font: inherit; font-size: 15px; padding: 12px 20px; border: 1px solid #BDBDBD; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer">Cancelar</button>
+<button onClick="{{saveAdd}}" style="font: inherit; font-weight: 600; font-size: 15px; padding: 12px 20px; border: none; border-radius: 8px; background: #C1363D; color: #FFFFFF; cursor: pointer">Guardar premio</button>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1640}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addOpen: false,
+      draftName: '',
+      draftCost: '',
+      histFilter: 'all',
+      amounts: {},
+      history: [
+        { id: 'h1', date: '07 oct', handle: 'Franco', activity: 'Taller', title: 'Taller: Docker desde cero', amount: '15', ok: true, reason: '—' },
+        { id: 'h2', date: '07 oct', handle: 'Luis', activity: 'Competencia', title: 'Competencia: CTF universitario', amount: '25', ok: true, reason: '—' },
+        { id: 'h3', date: '05 oct', handle: 'Willy', activity: 'Proyecto', title: 'Proyecto: Bot de horarios con IA', amount: '', ok: false, reason: 'Falta el link al repositorio' },
+        { id: 'h4', date: '04 oct', handle: 'Franco', activity: 'Evento', title: 'SCESI Init — organización', amount: '10', ok: true, reason: '—' },
+        { id: 'h5', date: '04 oct', handle: 'Saul', activity: 'Evento', title: 'SCESI Init — organización', amount: '10', ok: true, reason: '—' },
+        { id: 'h6', date: '30 sep', handle: 'Luis', activity: 'Competencia', title: 'Competencia: Cochatech', amount: '25', ok: true, reason: '—' },
+        { id: 'h7', date: '26 sep', handle: 'Saul', activity: 'Evento', title: 'Charla de networking', amount: '', ok: false, reason: 'Evento no organizado por la SCESI' }
+      ],
+      rejectFor: null,
+      rejectReason: '',
+      prizes: [
+        { name: 'Mid', cost: '50 SCC' },
+        { name: 'Llave SCESI', cost: '60 SCC' },
+        { name: 'Senior', cost: '100 SCC' }
+      ],
+      requests: [
+        { id: 'r1', handle: 'Franco', color: '#1E1E1E', activity: 'Taller', title: 'Taller de Git para nuevos', when: 'hoy', suggested: '15' },
+        { id: 'r2', handle: 'Saul', color: '#1E1E1E', activity: 'Evento', title: 'Organización: noche de juegos SCESI', when: 'ayer', suggested: '20' },
+        { id: 'r3', handle: 'Willy', color: '#1E1E1E', activity: 'Competencia', title: 'Participación en CTF regional', when: 'hace 2 días', suggested: '25' }
+      ]
+    };
+  }
+  renderVals() {
+    var self = this;
+    var decide = function (r, ok, reason) {
+      var amt = self.state.amounts[r.id];
+      if (amt === undefined) { amt = r.suggested; }
+      var row = { id: 'd' + r.id, date: 'Hoy', handle: r.handle, activity: r.activity, title: r.title, amount: ok ? String(amt) : '', ok: ok, reason: ok ? '—' : (reason || 'Sin motivo') };
+      self.setState({
+        requests: self.state.requests.filter(function (x) { return x.id !== r.id; }),
+        history: [row].concat(self.state.history),
+        rejectFor: null,
+        rejectReason: ''
+      });
+    };
+    var rf = this.state.rejectFor;
+    var hf = this.state.histFilter;
+    var rows = this.state.history.filter(function (h) { return hf === 'all' || (hf === 'ok' ? h.ok : !h.ok); });
+    var n = this.state.requests.length;
+    return {
+      requests: this.state.requests.map(function (r) {
+        return Object.assign({}, r, {
+          inputId: 'amt-' + r.id,
+          amount: self.state.amounts[r.id] === undefined ? r.suggested : self.state.amounts[r.id],
+          setAmount: function (e) {
+            var next = Object.assign({}, self.state.amounts);
+            next[r.id] = e.target.value;
+            self.setState({ amounts: next });
+          },
+          approve: function () { decide(r, true); },
+          reject: function () { self.setState({ rejectFor: r, rejectReason: '' }); }
+        });
+      }),
+      rejectOpen: !!rf,
+      rejectHandle: rf ? rf.handle : '',
+      rejectActivity: rf ? rf.activity : '',
+      rejectTitle: rf ? rf.title : '',
+      rejectReason: this.state.rejectReason,
+      setReason: function (e) { self.setState({ rejectReason: e.target.value }); },
+      closeReject: function () { self.setState({ rejectFor: null, rejectReason: '' }); },
+      confirmReject: function () { if (self.state.rejectFor) { decide(self.state.rejectFor, false, self.state.rejectReason.trim()); } },
+      histFilters: [['all', 'Todas'], ['ok', 'Aprobadas'], ['no', 'Rechazadas']].map(function (o) {
+        var on = hf === o[0];
+        return {
+          label: o[1],
+          bg: on ? '#1E1E1E' : 'transparent',
+          fg: on ? '#FFFFFF' : '#1E1E1E',
+          border: on ? '#1E1E1E' : '#BDBDBD',
+          pick: function () { self.setState({ histFilter: o[0] }); }
+        };
+      }),
+      history: rows.map(function (h) {
+        return {
+          date: h.date, handle: h.handle, activity: h.activity, title: h.title, reason: h.reason,
+          amount: h.ok ? '+' + h.amount + ' SCC' : '—',
+          amountColor: h.ok ? '#C1363D' : '#3D3D3D',
+          status: h.ok ? 'APROBADA' : 'RECHAZADA',
+          badgeBg: h.ok ? '#FBE9EA' : '#E3E3E3',
+          badgeFg: h.ok ? '#C1363D' : '#1E1E1E'
+        };
+      }),
+      empty: n === 0,
+      pendingLabel: n === 1 ? '1 pendiente' : n + ' pendientes',
+      redeems: [
+        { handle: 'Luis', color: '#1E1E1E', item: 'Senior', when: 'hoy', cost: '100 SCC' },
+        { handle: 'Saul', color: '#1E1E1E', item: 'Llave SCESI', when: 'ayer', cost: '60 SCC' },
+        { handle: 'Willy', color: '#1E1E1E', item: 'Mid', when: '23 sep', cost: '50 SCC' }
+      ],
+      prizes: this.state.prizes,
+      addOpen: this.state.addOpen,
+      draftName: this.state.draftName,
+      draftCost: this.state.draftCost,
+      openAdd: function () { self.setState({ addOpen: true }); },
+      closeAdd: function () { self.setState({ addOpen: false, draftName: '', draftCost: '' }); },
+      setName: function (e) { self.setState({ draftName: e.target.value }); },
+      setCost: function (e) { self.setState({ draftCost: e.target.value }); },
+      saveAdd: function () {
+        var name = self.state.draftName.trim();
+        if (!name) { return; }
+        var cost = (self.state.draftCost.trim() || '0') + ' SCC';
+        self.setState({ prizes: self.state.prizes.concat([{ name: name, cost: cost }]), addOpen: false, draftName: '', draftCost: '' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

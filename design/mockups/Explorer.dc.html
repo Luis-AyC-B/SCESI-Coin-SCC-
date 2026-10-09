@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Explorador de bloques</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EFEFEF}
+a{color:#C1363D}a:hover{color:#8E2228}
+</style>
+</helmet>
+<div style="min-height: 940px; display: flex; flex-direction: column; background: #EFEFEF; color: #1E1E1E; font-family: 'IBM Plex Sans', sans-serif">
+<header style="flex: none; background: #1E1E1E; border-bottom: 3px solid #C1363D">
+<div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="font-weight: 700; font-size: 22px; color: #FFFFFF; letter-spacing: -0.01em">SCESI <span style="color: #E5484F">Coin</span></div>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px; font-size: 15px">
+<a href="Premios.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Premios</a>
+<a href="Ranking.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Ranking</a>
+<a href="Explorer.dc.html" style="padding: 10px 16px; border-radius: 6px; background: #C1363D; color: #FFFFFF; font-weight: 600; text-decoration: none">Explorador</a>
+<a href="Admin.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Admin</a>
+</nav>
+<a href="Main.dc.html" aria-label="Mi panel" style="display: flex; align-items: center; gap: 10px; font-size: 14px; text-decoration: none">
+<div style="text-align: right">
+<div style="font-weight: 600; color: #FFFFFF">Franco</div>
+<div style="font-family: 'IBM Plex Mono', monospace; color: #B5B5B5; font-size: 13px">0x7a3f…c91e</div>
+</div>
+<img src="/_blob/43c8eaafe86585d370103f68b512e027" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #C1363D">
+</a>
+</div>
+</header>
+
+<main style="flex: 1 0 auto; width: 100%; box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #3D3D3D; text-transform: uppercase; letter-spacing: 0.08em">Red privada PoA</div>
+<h1 style="margin: 6px 0 0; font-size: 32px; letter-spacing: -0.02em">Explorador</h1>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; flex: 0 1 380px; min-width: 0">
+<label for="q" style="font-size: 14px; color: #3D3D3D">Buscar bloque, transacción o miembro</label>
+<input id="q" placeholder="#1042, 0x7a3f… o nombre" style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; padding: 12px 14px; border: 1px solid #BDBDBD; border-radius: 8px; background: #FFFFFF; color: #1E1E1E">
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+<div style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 20px">
+<div style="font-size: 14px; color: #3D3D3D">{{s.label}}</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 28px; font-weight: 500; margin-top: 6px">{{s.value}}</div>
+</div>
+</sc-for>
+</div>
+
+<section>
+<h2 style="margin: 0 0 14px; font-size: 20px">Últimos bloques</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch">
+<sc-for list="{{blocks}}" as="b" hint-placeholder-count="4">
+<div style="flex: 1 1 240px; min-width: 0; border-radius: 12px; padding: 18px; background: {{b.bg}}; color: {{b.fg}}; border: 1px solid {{b.border}}; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 500">{{b.num}}</span>
+<span style="font-size: 13px; opacity: 0.8">{{b.time}}</span>
+</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; opacity: 0.85; overflow-wrap: anywhere">hash {{b.hash}}</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; opacity: 0.7; overflow-wrap: anywhere">prev {{b.prev}}</div>
+<div style="font-size: 13px">{{b.txs}} tx · firmado por {{b.signer}}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px">
+<h2 style="margin: 0 0 12px; font-size: 20px">Transacciones del bloque #1042</h2>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="text-align: left; color: #3D3D3D; font-size: 13px">
+<th style="padding: 8px 12px 8px 0; font-weight: 500">Tx</th>
+<th style="padding: 8px 12px; font-weight: 500">Tipo</th>
+<th style="padding: 8px 12px; font-weight: 500">De</th>
+<th style="padding: 8px 12px; font-weight: 500">Para</th>
+<th style="padding: 8px 12px; font-weight: 500; text-align: right">Monto</th>
+<th style="padding: 8px 0 8px 12px; font-weight: 500">Motivo</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{txs}}" as="t" hint-placeholder-count="4">
+<tr style="border-top: 1px solid #E3E3E3">
+<td style="padding: 12px 12px 12px 0; font-family: 'IBM Plex Mono', monospace; color: #C1363D">{{t.id}}</td>
+<td style="padding: 12px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 3px 8px; border-radius: 4px; background: {{t.typeBg}}; color: {{t.typeFg}}">{{t.type}}</span></td>
+<td style="padding: 12px; font-family: 'IBM Plex Mono', monospace">{{t.from}}</td>
+<td style="padding: 12px; font-family: 'IBM Plex Mono', monospace">{{t.to}}</td>
+<td style="padding: 12px; font-family: 'IBM Plex Mono', monospace; text-align: right">{{t.amount}}</td>
+<td style="padding: 12px 0 12px 12px; color: #2B2B2B">{{t.reason}}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<footer style="flex: none; border-top: 1px solid #D2D2D2; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<img src="/_blob/184a39ff5019c4ecab49ce8ce9235479" alt="SCESI UMSS" style="height: 48px; width: auto; display: block">
+<span style="font-size: 14px; color: #3D3D3D">Sociedad Científica de Estudiantes de Sistemas e Informática · UMSS</span>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":940}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var latest = { bg: '#1E1E1E', fg: '#FFFFFF', border: '#1E1E1E' };
+    var old = { bg: '#FFFFFF', fg: '#1E1E1E', border: '#D2D2D2' };
+    var mint = { typeBg: '#FBE9EA', typeFg: '#C1363D' };
+    var other = { typeBg: '#E3E3E3', typeFg: '#1E1E1E' };
+    return {
+      stats: [
+        { label: 'Altura de la cadena', value: '#1044' },
+        { label: 'Premios otorgados', value: '38' },
+        { label: 'SCC emitidos (gestión)', value: '1,590' },
+        { label: 'Nodos validadores', value: '3 / 3' }
+      ],
+      blocks: [
+        Object.assign({ num: '#1044', time: 'hoy', hash: '0x3b7e…d210', prev: '0xe41a…9c07', txs: '1', signer: 'Directiva' }, latest),
+        Object.assign({ num: '#1043', time: 'ayer', hash: '0xe41a…9c07', prev: '0x9f2c…a41b', txs: '1', signer: 'Nodo 2' }, old),
+        Object.assign({ num: '#1042', time: '07 oct', hash: '0x9f2c…a41b', prev: '0x51de…07c3', txs: '2', signer: 'Directiva' }, old),
+        Object.assign({ num: '#1041', time: '04 oct', hash: '0x51de…07c3', prev: '0xc803…e9f2', txs: '2', signer: 'Nodo 2' }, old)
+      ],
+      txs: [
+        Object.assign({ id: '0xa71…', type: 'EMISIÓN', from: 'Directiva', to: 'Franco', amount: '15 SCC', reason: 'Taller: Docker desde cero' }, mint),
+        Object.assign({ id: '0xa72…', type: 'EMISIÓN', from: 'Directiva', to: 'Luis', amount: '25 SCC', reason: 'Competencia: CTF universitario' }, mint)
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

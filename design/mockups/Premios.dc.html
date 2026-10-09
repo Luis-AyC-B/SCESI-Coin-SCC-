@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Premios</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EFEFEF}
+a{color:#C1363D}a:hover{color:#8E2228}
+</style>
+</helmet>
+<div style="min-height: 980px; display: flex; flex-direction: column; background: #EFEFEF; color: #1E1E1E; font-family: 'IBM Plex Sans', sans-serif">
+<header style="flex: none; background: #1E1E1E; border-bottom: 3px solid #C1363D">
+<div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="font-weight: 700; font-size: 22px; color: #FFFFFF; letter-spacing: -0.01em">SCESI <span style="color: #E5484F">Coin</span></div>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px; font-size: 15px">
+<a href="Premios.dc.html" style="padding: 10px 16px; border-radius: 6px; background: #C1363D; color: #FFFFFF; font-weight: 600; text-decoration: none">Premios</a>
+<a href="Ranking.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Ranking</a>
+<a href="Explorer.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Explorador</a>
+<a href="Admin.dc.html" style="padding: 10px 16px; border-radius: 6px; color: #E6E6E6; font-weight: 500; text-decoration: none">Admin</a>
+</nav>
+<a href="Main.dc.html" aria-label="Mi panel" style="display: flex; align-items: center; gap: 10px; font-size: 14px; text-decoration: none">
+<div style="text-align: right">
+<div style="font-weight: 600; color: #FFFFFF">Franco</div>
+<div style="font-family: 'IBM Plex Mono', monospace; color: #B5B5B5; font-size: 13px">0x7a3f…c91e</div>
+</div>
+<img src="/_blob/43c8eaafe86585d370103f68b512e027" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #C1363D">
+</a>
+</div>
+</header>
+
+<main style="flex: 1 0 auto; width: 100%; box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 32px 24px 48px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px">
+<div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #3D3D3D; text-transform: uppercase; letter-spacing: 0.08em">Gestión 2026</div>
+<h1 style="margin: 6px 0 0; font-size: 32px; letter-spacing: -0.02em">Premios</h1>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 8px; background: #1E1E1E; color: #FFFFFF">
+<span style="font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 4px; background: #C1363D; letter-spacing: 0.04em">{{rankUpper}}</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 500">{{points}} SCC</span>
+</div>
+</div>
+
+<sc-if value="{{toast}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-radius: 10px; background: #1E1E1E; color: #FFFFFF; font-size: 15px">
+<span>{{toastText}}</span>
+<button onClick="{{dismiss}}" aria-label="Cerrar aviso" style="width: 44px; height: 44px; flex: none; border: none; background: transparent; color: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+</sc-if>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<sc-for list="{{ladder}}" as="p" hint-placeholder-count="4">
+<div style="background: {{p.bg}}; color: {{p.fg}}; border: 2px solid {{p.border}}; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; opacity: 0.8">NIVEL {{p.step}}</span>
+<span style="font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: {{p.tagBg}}; color: {{p.tagFg}}; letter-spacing: 0.04em">{{p.tag}}</span>
+</div>
+<div style="font-size: 26px; font-weight: 700">{{p.name}}</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: {{p.costColor}}">{{p.costLabel}}</div>
+<sc-if value="{{p.claimable}}" hint-placeholder-val="{{false}}">
+<button onClick="{{p.open}}" style="font: inherit; font-size: 15px; font-weight: 600; min-height: 44px; border: none; border-radius: 8px; background: #C1363D; color: #FFFFFF; cursor: pointer">Reclamar</button>
+</sc-if>
+<sc-if value="{{p.progress}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="height: 8px; border-radius: 4px; background: #E3E3E3">
+<div style="width: {{p.pct}}; height: 8px; border-radius: 4px; background: #C1363D"></div>
+</div>
+<span style="font-size: 14px; color: #3D3D3D">{{p.missing}}</span>
+</div>
+</sc-if>
+<sc-if value="{{p.locked}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #3D3D3D">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+<span>{{p.lockText}}</span>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+
+<section style="background: #FFFFFF; border: 1px solid #D2D2D2; border-radius: 12px; padding: 24px">
+<h2 style="margin: 0 0 8px; font-size: 20px">Mis premios</h2>
+<sc-if value="{{noHistory}}" hint-placeholder-val="{{false}}">
+<div style="padding: 20px 0; color: #3D3D3D; border-top: 1px solid #E3E3E3; font-size: 15px">Todavía no reclamaste ningún premio.</div>
+</sc-if>
+<sc-for list="{{history}}" as="h" hint-placeholder-count="1">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #E3E3E3; font-size: 15px">
+<span style="flex: 1 1 200px; font-weight: 600">{{h.name}}</span>
+<span style="font-size: 14px; color: #3D3D3D">{{h.date}}</span>
+</div>
+</sc-for>
+</section>
+</main>
+<footer style="flex: none; border-top: 1px solid #D2D2D2; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<img src="/_blob/184a39ff5019c4ecab49ce8ce9235479" alt="SCESI UMSS" style="height: 48px; width: auto; display: block">
+<span style="font-size: 14px; color: #3D3D3D">Sociedad Científica de Estudiantes de Sistemas e Informática · UMSS</span>
+</div>
+</footer>
+
+<sc-if value="{{confirmOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; background: rgba(30, 30, 30, 0.55); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10">
+<div role="dialog" aria-modal="true" aria-labelledby="cj-title" style="width: 100%; max-width: 440px; background: #FFFFFF; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25)">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #E3E3E3">
+<h2 id="cj-title" style="margin: 0; font-size: 20px">Reclamar premio</h2>
+<button onClick="{{close}}" aria-label="Cerrar" style="width: 44px; height: 44px; border: none; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+<div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; font-size: 15px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 4px; background: #E3E3E3; letter-spacing: 0.04em">{{rankUpper}}</span>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+<span style="font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 4px; background: #C1363D; color: #FFFFFF; letter-spacing: 0.04em">{{selUpper}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 8px; background: #F4F4F4; border: 1px solid #E3E3E3; font-family: 'IBM Plex Mono', monospace; font-size: 14px">
+<div style="display: flex; justify-content: space-between"><span>Tus SCC</span><span>{{points}} SCC</span></div>
+<div style="display: flex; justify-content: space-between"><span>Requisito</span><span>{{selCost}} SCC</span></div>
+</div>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px 20px">
+<button onClick="{{close}}" style="font: inherit; font-size: 15px; padding: 12px 20px; border: 1px solid #BDBDBD; border-radius: 8px; background: transparent; color: #1E1E1E; cursor: pointer">Cancelar</button>
+<button onClick="{{confirm}}" style="font: inherit; font-weight: 600; font-size: 15px; padding: 12px 20px; border: none; border-radius: 8px; background: #C1363D; color: #FFFFFF; cursor: pointer">Reclamar {{selName}}</button>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"puntos":{"editor":"range","default":45,"min":0,"max":150,"step":5,"section":"Demo"},"$preview":{"width":1280,"height":980}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { claimed: 0, selected: null, toast: '', history: [] };
+  }
+  renderVals() {
+    var self = this;
+    var pts = this.props.puntos ?? 45;
+    var ladder = [
+      { name: 'Junior', cost: 0 },
+      { name: 'Mid', cost: 50 },
+      { name: 'Llave SCESI', cost: 60 },
+      { name: 'Senior', cost: 100 }
+    ];
+    var claimed = this.state.claimed;
+    var sel = this.state.selected;
+    var current = ladder[claimed];
+    return {
+      points: pts,
+      rankUpper: current.name.toUpperCase(),
+      ladder: ladder.map(function (p, i) {
+        var done = i <= claimed;
+        var isCurrent = i === claimed;
+        var next = i === claimed + 1;
+        var reach = pts >= p.cost;
+        var claimable = next && reach;
+        var progress = next && !reach;
+        var locked = i > claimed + 1;
+        var tag = isCurrent ? 'TU RANGO' : (done ? 'OBTENIDO' : (claimable ? 'DISPONIBLE' : (progress ? 'SIGUIENTE' : 'BLOQUEADO')));
+        return {
+          step: i + 1,
+          name: p.name,
+          costLabel: p.cost === 0 ? 'Inicial' : p.cost + ' SCC',
+          tag: tag,
+          bg: isCurrent ? '#1E1E1E' : '#FFFFFF',
+          fg: isCurrent ? '#FFFFFF' : (locked ? '#8A8A8A' : '#1E1E1E'),
+          border: isCurrent ? '#1E1E1E' : (claimable ? '#C1363D' : '#D2D2D2'),
+          tagBg: isCurrent ? '#C1363D' : (claimable ? '#C1363D' : '#E3E3E3'),
+          tagFg: isCurrent || claimable ? '#FFFFFF' : '#1E1E1E',
+          costColor: isCurrent ? '#F28B90' : (locked ? '#8A8A8A' : '#C1363D'),
+          claimable: claimable,
+          progress: progress,
+          locked: locked,
+          pct: Math.min(100, Math.round(pts / p.cost * 100)) + '%',
+          missing: 'Te faltan ' + (p.cost - pts) + ' SCC',
+          lockText: 'Requiere ' + (i > 0 ? ladder[i - 1].name : ''),
+          open: function () { self.setState({ selected: i }); }
+        };
+      }),
+      history: this.state.history,
+      noHistory: this.state.history.length === 0,
+      confirmOpen: sel !== null,
+      selName: sel !== null ? ladder[sel].name : '',
+      selUpper: sel !== null ? ladder[sel].name.toUpperCase() : '',
+      selCost: sel !== null ? ladder[sel].cost : 0,
+      close: function () { self.setState({ selected: null }); },
+      confirm: function () {
+        var i = self.state.selected;
+        if (i === null || i !== self.state.claimed + 1 || pts < ladder[i].cost) { return; }
+        self.setState({
+          claimed: i,
+          selected: null,
+          toast: 'Ahora eres ' + ladder[i].name + '. El premio quedó registrado en un nuevo bloque.',
+          history: [{ name: ladder[i].name, date: 'Hoy' }].concat(self.state.history)
+        });
+      },
+      toast: !!this.state.toast,
+      toastText: this.state.toast,
+      dismiss: function () { self.setState({ toast: '' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
