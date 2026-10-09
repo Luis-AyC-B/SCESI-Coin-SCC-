@@ -22,31 +22,31 @@
       "codigo": "ORGANIZACION",
       "nombre": "Organizar un evento",
       "abreviatura": "E",
-      "scc_sugeridos": 8
+      "scc_sugeridos": 3
     },
     {
       "codigo": "TALLER",
       "nombre": "Dar un curso o taller",
       "abreviatura": "T",
-      "scc_sugeridos": 10
+      "scc_sugeridos": 4
     },
     {
       "codigo": "INVESTIGACION",
       "nombre": "Investigación",
       "abreviatura": "I",
-      "scc_sugeridos": 15
+      "scc_sugeridos": 5
     },
     {
       "codigo": "PROYECTO",
       "nombre": "Proyecto del área",
       "abreviatura": "P",
-      "scc_sugeridos": 15
+      "scc_sugeridos": 5
     },
     {
       "codigo": "COMPETENCIA",
       "nombre": "Ganar una competencia",
       "abreviatura": "C",
-      "scc_sugeridos": 20
+      "scc_sugeridos": 6
     }
   ],
   "rangos": [
@@ -132,11 +132,896 @@
   "peticiones": [
     {
       "usuario": "saul",
+      "actividad": "TALLER",
+      "fecha": "2023-03-10",
+      "titulo": "Taller Android básico",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-001"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2023-03-11"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2023-05-01",
+      "titulo": "Organización: Semana de la Ingeniería 2023",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-002"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2023-05-02"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2023-06-22",
+      "titulo": "Asistencia: Feria de proyectos 2023",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-003"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2023-06-23"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2023-08-13",
+      "titulo": "Asistencia: Hackathon SCESI 2023",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-004"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2023-08-14"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "TALLER",
+      "fecha": "2023-10-04",
+      "titulo": "Taller Flutter widgets",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-005"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2023-10-05"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2023-11-25",
+      "titulo": "Organización: Bienvenida SCESI 2023",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-006"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2023-11-26"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2024-03-10",
+      "titulo": "Organización: Semana de la Ingeniería 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-007"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-03-11"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-03-10",
+      "titulo": "Asistencia: Semana de la Ingeniería 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-039"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-03-11"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-03-10",
+      "titulo": "Asistencia: Semana de la Ingeniería 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-052"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-03-11"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "TALLER",
+      "fecha": "2024-03-10",
+      "titulo": "Taller de diseño gráfico",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-063"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-03-11"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-04-11",
+      "titulo": "Asistencia: Feria de proyectos 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-008"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-04-12"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-05-14",
+      "titulo": "Asistencia: Hackathon SCESI 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-009"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-05-15"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-05-14",
+      "titulo": "Asistencia: Feria de proyectos 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-040"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-05-15"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "TALLER",
+      "fecha": "2024-05-14",
+      "titulo": "Taller de redes",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-053"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-05-15"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "TALLER",
+      "fecha": "2024-06-16",
+      "titulo": "Taller Android básico",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-010"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-06-17"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2024-07-18",
+      "titulo": "Organización: Bienvenida SCESI 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-011"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-07-19"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "TALLER",
+      "fecha": "2024-07-18",
+      "titulo": "Taller de JavaScript",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-041"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-07-19"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ORGANIZACION",
+      "fecha": "2024-07-18",
+      "titulo": "Organización: Hackathon SCESI 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-054"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-07-19"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ORGANIZACION",
+      "fecha": "2024-07-18",
+      "titulo": "Organización: Feria de proyectos 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-064"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-07-19"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "PROYECTO",
+      "fecha": "2024-08-19",
+      "titulo": "App de la biblioteca FCyT",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-012"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-08-20"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-09-21",
+      "titulo": "Asistencia: Semana de la Ingeniería 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-013"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-09-22"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ORGANIZACION",
+      "fecha": "2024-09-21",
+      "titulo": "Organización: Aniversario SCESI 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-042"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-09-22"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "PROYECTO",
+      "fecha": "2024-09-21",
+      "titulo": "Laboratorio de CTF",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-055"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-09-22"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-10-24",
+      "titulo": "Asistencia: Feria de proyectos 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-014"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-10-25"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-11-25",
+      "titulo": "Asistencia: Hackathon SCESI 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-015"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-11-26"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "PROYECTO",
+      "fecha": "2024-11-25",
+      "titulo": "Landing de la SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-043"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-11-26"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-11-25",
+      "titulo": "Asistencia: Bienvenida SCESI 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-056"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-11-26"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-11-25",
+      "titulo": "Asistencia: Hackathon SCESI 2024",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-065"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2024-11-26"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-03-10",
+      "titulo": "Asistencia: Feria de proyectos 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-016"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-03-11"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-03-10",
+      "titulo": "Asistencia: Feria de proyectos 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-044"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-03-11"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "TALLER",
+      "fecha": "2025-03-10",
+      "titulo": "Taller de redes",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-057"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-03-11"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ORGANIZACION",
+      "fecha": "2025-03-10",
+      "titulo": "Organización: Feria de proyectos 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-066"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-03-11"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-04-08",
+      "titulo": "Asistencia: Hackathon SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-017"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-04-09"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "TALLER",
+      "fecha": "2025-04-16",
+      "titulo": "Taller de JavaScript",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-045"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-04-17"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "PROYECTO",
+      "fecha": "2025-04-22",
+      "titulo": "Identidad visual SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-067"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-04-23"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ORGANIZACION",
+      "fecha": "2025-05-01",
+      "titulo": "Organización: Hackathon SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-058"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-05-02"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "TALLER",
+      "fecha": "2025-05-07",
+      "titulo": "Taller Android básico",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-018"
+      ],
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-05-08"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ORGANIZACION",
+      "fecha": "2025-05-23",
+      "titulo": "Organización: Aniversario SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-046"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-05-24"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ORGANIZACION",
+      "fecha": "2025-06-05",
+      "titulo": "Organización: Bienvenida SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-019"
+      ],
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-06-06"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-06-05",
+      "titulo": "Asistencia: Aniversario SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-068"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-06-06"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "PROYECTO",
+      "fecha": "2025-06-22",
+      "titulo": "Laboratorio de CTF",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-059"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-06-23"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "PROYECTO",
+      "fecha": "2025-06-29",
+      "titulo": "Landing de la SCESI",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-047"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-06-30"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "PROYECTO",
+      "fecha": "2025-07-04",
+      "titulo": "App de la biblioteca FCyT",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-020"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-07-05"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "COMPETENCIA",
+      "fecha": "2025-07-18",
+      "titulo": "1er lugar Design Challenge",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-069"
+      ],
+      "monto_sugerido": 6,
+      "monto_aprobado": 6,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-07-19"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-08-01",
+      "titulo": "Asistencia: Semana de la Ingeniería 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-021"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-08-02"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-08-06",
+      "titulo": "Asistencia: Code Night 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-048"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-08-07"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-08-13",
+      "titulo": "Asistencia: Bienvenida SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-060"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-08-14"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "COMPETENCIA",
+      "fecha": "2025-08-30",
+      "titulo": "1er lugar Hackathon Cochabamba",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-022"
+      ],
+      "monto_sugerido": 6,
+      "monto_aprobado": 6,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-08-31"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "INVESTIGACION",
+      "fecha": "2025-08-30",
+      "titulo": "Investigación: Usabilidad de sistemas UMSS",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-070"
+      ],
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-08-31"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "COMPETENCIA",
+      "fecha": "2025-09-12",
+      "titulo": "1er lugar Hackathon Web UMSS",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-049"
+      ],
+      "monto_sugerido": 6,
+      "monto_aprobado": 6,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-09-13"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-09-28",
+      "titulo": "Asistencia: Hackathon SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-023"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-09-29"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "COMPETENCIA",
+      "fecha": "2025-10-04",
+      "titulo": "1er lugar CTF Cochabamba",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-061"
+      ],
+      "monto_sugerido": 6,
+      "monto_aprobado": 6,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-10-05"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-10-13",
+      "titulo": "Asistencia: Semana de la Ingeniería 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-071"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-10-14"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-10-19",
+      "titulo": "Asistencia: Feria de proyectos 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-050"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-10-20"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-10-27",
+      "titulo": "Asistencia: Aniversario SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-024"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-10-28"
+    },
+    {
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-11-25",
+      "titulo": "Asistencia: Bienvenida SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-025"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-11-26"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-11-25",
+      "titulo": "Asistencia: Hackathon SCESI 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-051"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-11-26"
+    },
+    {
+      "usuario": "steven",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-11-25",
+      "titulo": "Asistencia: Semana de la Ingeniería 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-062"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-11-26"
+    },
+    {
+      "usuario": "stefany",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-11-25",
+      "titulo": "Asistencia: Feria de proyectos 2025",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-072"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2025-11-26"
+    },
+    {
+      "usuario": "saul",
       "actividad": "ASISTENCIA",
       "fecha": "2026-03-14",
       "titulo": "Asistencia: Bienvenida SCESI 2026",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-001"
+        "https://drive.google.com/drive/folders/scesi-evidencia-073"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": 1,
@@ -151,7 +1036,7 @@
       "fecha": "2026-03-14",
       "titulo": "Asistencia: Bienvenida SCESI 2026",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-019"
+        "https://drive.google.com/drive/folders/scesi-evidencia-088"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": 1,
@@ -166,7 +1051,7 @@
       "fecha": "2026-03-14",
       "titulo": "Asistencia: Bienvenida SCESI 2026",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-027"
+        "https://drive.google.com/drive/folders/scesi-evidencia-095"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": 1,
@@ -181,7 +1066,7 @@
       "fecha": "2026-03-14",
       "titulo": "Asistencia: Bienvenida SCESI 2026",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-034"
+        "https://drive.google.com/drive/folders/scesi-evidencia-101"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": 1,
@@ -196,7 +1081,7 @@
       "fecha": "2026-03-14",
       "titulo": "Asistencia: Bienvenida SCESI 2026",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-040"
+        "https://drive.google.com/drive/folders/scesi-evidencia-107"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": 1,
@@ -211,10 +1096,10 @@
       "fecha": "2026-03-28",
       "titulo": "Taller Flutter desde cero",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-002"
+        "https://drive.google.com/drive/folders/scesi-evidencia-074"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -226,10 +1111,10 @@
       "fecha": "2026-04-04",
       "titulo": "Taller HTML y CSS",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-020"
+        "https://drive.google.com/drive/folders/scesi-evidencia-089"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -241,10 +1126,10 @@
       "fecha": "2026-04-11",
       "titulo": "Taller Linux para seguridad",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-028"
+        "https://drive.google.com/drive/folders/scesi-evidencia-096"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -256,10 +1141,10 @@
       "fecha": "2026-04-18",
       "titulo": "Organización: Game Jam SCESI",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-003"
+        "https://drive.google.com/drive/folders/scesi-evidencia-075"
       ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -271,10 +1156,10 @@
       "fecha": "2026-04-18",
       "titulo": "Taller Figma básico",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-035"
+        "https://drive.google.com/drive/folders/scesi-evidencia-102"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -286,10 +1171,10 @@
       "fecha": "2026-05-09",
       "titulo": "App móvil de asistencia SCESI",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-004"
+        "https://drive.google.com/drive/folders/scesi-evidencia-076"
       ],
-      "monto_sugerido": 15,
-      "monto_aprobado": 15,
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -301,10 +1186,10 @@
       "fecha": "2026-05-10",
       "titulo": "Taller Git y GitHub",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-041"
+        "https://drive.google.com/drive/folders/scesi-evidencia-108"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -316,10 +1201,10 @@
       "fecha": "2026-05-16",
       "titulo": "Organización: Code Night",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-021"
+        "https://drive.google.com/drive/folders/scesi-evidencia-090"
       ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -331,10 +1216,10 @@
       "fecha": "2026-06-06",
       "titulo": "Sitio web de la SCESI",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-022"
+        "https://drive.google.com/drive/folders/scesi-evidencia-091"
       ],
-      "monto_sugerido": 15,
-      "monto_aprobado": 15,
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -346,10 +1231,10 @@
       "fecha": "2026-06-13",
       "titulo": "1er lugar Hackathon Mobile Cochabamba",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-005"
+        "https://drive.google.com/drive/folders/scesi-evidencia-077"
       ],
-      "monto_sugerido": 20,
-      "monto_aprobado": 20,
+      "monto_sugerido": 6,
+      "monto_aprobado": 6,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -361,10 +1246,10 @@
       "fecha": "2026-06-20",
       "titulo": "Design system SCESI",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-036"
+        "https://drive.google.com/drive/folders/scesi-evidencia-103"
       ],
-      "monto_sugerido": 15,
-      "monto_aprobado": 15,
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -376,29 +1261,14 @@
       "fecha": "2026-07-04",
       "titulo": "Investigación: OWASP Top 10 en apps universitarias",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-030"
+        "https://drive.google.com/drive/folders/scesi-evidencia-098"
       ],
-      "monto_sugerido": 15,
-      "monto_aprobado": 15,
+      "monto_sugerido": 5,
+      "monto_aprobado": 5,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
       "resuelta_en": "2026-07-05"
-    },
-    {
-      "usuario": "saul",
-      "actividad": "TALLER",
-      "fecha": "2026-07-11",
-      "titulo": "Taller Kotlin Multiplatform",
-      "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-006"
-      ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
-      "estado": "APROBADA",
-      "motivo_rechazo": null,
-      "resuelta_por": "shamir",
-      "resuelta_en": "2026-07-12"
     },
     {
       "usuario": "isaac",
@@ -406,10 +1276,10 @@
       "fecha": "2026-07-18",
       "titulo": "Taller React",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-023"
+        "https://drive.google.com/drive/folders/scesi-evidencia-092"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -421,10 +1291,10 @@
       "fecha": "2026-07-20",
       "titulo": "Taller FastAPI básico",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-042"
+        "https://drive.google.com/drive/folders/scesi-evidencia-109"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -436,10 +1306,10 @@
       "fecha": "2026-07-30",
       "titulo": "Organización: Design Sprint",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-037"
+        "https://drive.google.com/drive/folders/scesi-evidencia-104"
       ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -451,7 +1321,7 @@
       "fecha": "2026-08-09",
       "titulo": "Asistencia: Webinar de JavaScript",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-045"
+        "https://drive.google.com/drive/folders/scesi-evidencia-113"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": null,
@@ -461,19 +1331,34 @@
       "resuelta_en": "2026-08-10"
     },
     {
-      "usuario": "isaac",
-      "actividad": "PROYECTO",
-      "fecha": "2026-08-15",
-      "titulo": "Portal de eventos SCESI",
+      "usuario": "saul",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-08-22",
+      "titulo": "Asistencia: Charla de ciberseguridad",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-024"
+        "https://drive.google.com/drive/folders/scesi-evidencia-078"
       ],
-      "monto_sugerido": 15,
-      "monto_aprobado": 15,
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
-      "resuelta_en": "2026-08-16"
+      "resuelta_en": "2026-08-23"
+    },
+    {
+      "usuario": "isaac",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-08-22",
+      "titulo": "Asistencia: Charla de ciberseguridad",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-093"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-08-23"
     },
     {
       "usuario": "steven",
@@ -481,7 +1366,22 @@
       "fecha": "2026-08-22",
       "titulo": "Asistencia: Charla de ciberseguridad",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-031"
+        "https://drive.google.com/drive/folders/scesi-evidencia-099"
+      ],
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
+      "estado": "APROBADA",
+      "motivo_rechazo": null,
+      "resuelta_por": "shamir",
+      "resuelta_en": "2026-08-23"
+    },
+    {
+      "usuario": "franco",
+      "actividad": "ASISTENCIA",
+      "fecha": "2026-08-22",
+      "titulo": "Asistencia: Charla de ciberseguridad",
+      "evidencia": [
+        "https://drive.google.com/drive/folders/scesi-evidencia-110"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": 1,
@@ -496,10 +1396,10 @@
       "fecha": "2026-09-03",
       "titulo": "Taller de UX Research",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-038"
+        "https://drive.google.com/drive/folders/scesi-evidencia-105"
       ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -511,44 +1411,14 @@
       "fecha": "2026-09-05",
       "titulo": "Organización: Feria de proyectos SCESI",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-007"
+        "https://drive.google.com/drive/folders/scesi-evidencia-079"
       ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
       "resuelta_en": "2026-09-06"
-    },
-    {
-      "usuario": "steven",
-      "actividad": "ORGANIZACION",
-      "fecha": "2026-09-12",
-      "titulo": "Organización: CTF SCESI",
-      "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-032"
-      ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
-      "estado": "APROBADA",
-      "motivo_rechazo": null,
-      "resuelta_por": "shamir",
-      "resuelta_en": "2026-09-13"
-    },
-    {
-      "usuario": "isaac",
-      "actividad": "TALLER",
-      "fecha": "2026-09-19",
-      "titulo": "Taller Next.js",
-      "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-025"
-      ],
-      "monto_sugerido": 10,
-      "monto_aprobado": 10,
-      "estado": "APROBADA",
-      "motivo_rechazo": null,
-      "resuelta_por": "shamir",
-      "resuelta_en": "2026-09-20"
     },
     {
       "usuario": "stefany",
@@ -556,9 +1426,9 @@
       "fecha": "2026-09-20",
       "titulo": "Rediseño de mi portafolio personal",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-046"
+        "https://drive.google.com/drive/folders/scesi-evidencia-114"
       ],
-      "monto_sugerido": 15,
+      "monto_sugerido": 5,
       "monto_aprobado": null,
       "estado": "RECHAZADA",
       "motivo_rechazo": "No es un proyecto del área",
@@ -566,30 +1436,15 @@
       "resuelta_en": "2026-09-21"
     },
     {
-      "usuario": "saul",
-      "actividad": "INVESTIGACION",
-      "fecha": "2026-09-26",
-      "titulo": "Investigación: Rendimiento de Flutter vs nativo",
-      "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-008"
-      ],
-      "monto_sugerido": 15,
-      "monto_aprobado": 15,
-      "estado": "APROBADA",
-      "motivo_rechazo": null,
-      "resuelta_por": "shamir",
-      "resuelta_en": "2026-09-27"
-    },
-    {
       "usuario": "stefany",
-      "actividad": "ORGANIZACION",
+      "actividad": "ASISTENCIA",
       "fecha": "2026-10-02",
-      "titulo": "Organización: Expo de portafolios",
+      "titulo": "Asistencia: Expo de portafolios",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-039"
+        "https://drive.google.com/drive/folders/scesi-evidencia-106"
       ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -601,9 +1456,9 @@
       "fecha": "2026-10-03",
       "titulo": "1er lugar CTF regional Bolivia",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-049"
+        "https://drive.google.com/drive/folders/scesi-evidencia-117"
       ],
-      "monto_sugerido": 20,
+      "monto_sugerido": 6,
       "monto_aprobado": null,
       "estado": "PENDIENTE",
       "motivo_rechazo": null,
@@ -616,10 +1471,10 @@
       "fecha": "2026-10-04",
       "titulo": "Organización: SCESI Init",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-043"
+        "https://drive.google.com/drive/folders/scesi-evidencia-111"
       ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -627,14 +1482,14 @@
     },
     {
       "usuario": "saul",
-      "actividad": "ORGANIZACION",
+      "actividad": "ASISTENCIA",
       "fecha": "2026-10-06",
-      "titulo": "Organización: Noche de juegos SCESI",
+      "titulo": "Asistencia: Noche de juegos SCESI",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-009"
+        "https://drive.google.com/drive/folders/scesi-evidencia-080"
       ],
-      "monto_sugerido": 5,
-      "monto_aprobado": 5,
+      "monto_sugerido": 1,
+      "monto_aprobado": 1,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -646,10 +1501,10 @@
       "fecha": "2026-10-07",
       "titulo": "Organización: Code Night de octubre",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-026"
+        "https://drive.google.com/drive/folders/scesi-evidencia-094"
       ],
-      "monto_sugerido": 5,
-      "monto_aprobado": 5,
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -661,10 +1516,10 @@
       "fecha": "2026-10-07",
       "titulo": "Taller Docker desde cero",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-044"
+        "https://drive.google.com/drive/folders/scesi-evidencia-112"
       ],
-      "monto_sugerido": 15,
-      "monto_aprobado": 15,
+      "monto_sugerido": 4,
+      "monto_aprobado": 4,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -674,12 +1529,12 @@
       "usuario": "steven",
       "actividad": "ORGANIZACION",
       "fecha": "2026-10-08",
-      "titulo": "Organización: Taller abierto de CTF",
+      "titulo": "Organización: CTF SCESI",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-033"
+        "https://drive.google.com/drive/folders/scesi-evidencia-100"
       ],
-      "monto_sugerido": 8,
-      "monto_aprobado": 8,
+      "monto_sugerido": 3,
+      "monto_aprobado": 3,
       "estado": "APROBADA",
       "motivo_rechazo": null,
       "resuelta_por": "shamir",
@@ -691,7 +1546,7 @@
       "fecha": "2026-10-08",
       "titulo": "Asistencia: Meetup GDG Cochabamba",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-048"
+        "https://drive.google.com/drive/folders/scesi-evidencia-116"
       ],
       "monto_sugerido": 1,
       "monto_aprobado": null,
@@ -706,9 +1561,9 @@
       "fecha": "2026-10-09",
       "titulo": "Taller de Git para nuevos",
       "evidencia": [
-        "https://drive.google.com/drive/folders/scesi-evidencia-047"
+        "https://drive.google.com/drive/folders/scesi-evidencia-115"
       ],
-      "monto_sugerido": 10,
+      "monto_sugerido": 4,
       "monto_aprobado": null,
       "estado": "PENDIENTE",
       "motivo_rechazo": null,
@@ -717,6 +1572,110 @@
     }
   ],
   "otorgamientos": [
+    {
+      "usuario": "shamir",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-03-10",
+      "monto": 1,
+      "motivo": "Asistencia: Semana de la Ingeniería 2024",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "TALLER",
+      "fecha": "2024-05-14",
+      "monto": 4,
+      "motivo": "Taller de Machine Learning",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ORGANIZACION",
+      "fecha": "2024-07-18",
+      "monto": 3,
+      "motivo": "Organización: Hackathon SCESI 2024",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "PROYECTO",
+      "fecha": "2024-09-21",
+      "monto": 5,
+      "motivo": "Clasificador de imágenes de cultivos",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ASISTENCIA",
+      "fecha": "2024-11-25",
+      "monto": 1,
+      "motivo": "Asistencia: Bienvenida SCESI 2024",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "TALLER",
+      "fecha": "2025-03-10",
+      "monto": 4,
+      "motivo": "Taller de Machine Learning",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ORGANIZACION",
+      "fecha": "2025-04-16",
+      "monto": 3,
+      "motivo": "Organización: Hackathon SCESI 2025",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "PROYECTO",
+      "fecha": "2025-05-23",
+      "monto": 5,
+      "motivo": "Clasificador de imágenes de cultivos",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-06-29",
+      "monto": 1,
+      "motivo": "Asistencia: Bienvenida SCESI 2025",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "COMPETENCIA",
+      "fecha": "2025-08-06",
+      "monto": 6,
+      "motivo": "1er lugar Datathon Bolivia",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "INVESTIGACION",
+      "fecha": "2025-09-12",
+      "monto": 5,
+      "motivo": "Investigación: LLMs en español",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-10-19",
+      "monto": 1,
+      "motivo": "Asistencia: Feria de proyectos 2025",
+      "otorgado_por": "shamir"
+    },
+    {
+      "usuario": "shamir",
+      "actividad": "ASISTENCIA",
+      "fecha": "2025-11-25",
+      "monto": 1,
+      "motivo": "Asistencia: Hackathon SCESI 2025",
+      "otorgado_por": "shamir"
+    },
     {
       "usuario": "shamir",
       "actividad": "ASISTENCIA",
@@ -729,7 +1688,7 @@
       "usuario": "shamir",
       "actividad": "TALLER",
       "fecha": "2026-03-21",
-      "monto": 10,
+      "monto": 4,
       "motivo": "Taller Python para IA",
       "otorgado_por": "shamir"
     },
@@ -737,7 +1696,7 @@
       "usuario": "shamir",
       "actividad": "INVESTIGACION",
       "fecha": "2026-04-25",
-      "monto": 15,
+      "monto": 5,
       "motivo": "Investigación: Detección de plagio con embeddings",
       "otorgado_por": "shamir"
     },
@@ -745,7 +1704,7 @@
       "usuario": "shamir",
       "actividad": "ORGANIZACION",
       "fecha": "2026-05-23",
-      "monto": 8,
+      "monto": 3,
       "motivo": "Organización: Semana de la IA",
       "otorgado_por": "shamir"
     },
@@ -753,7 +1712,7 @@
       "usuario": "steven",
       "actividad": "COMPETENCIA",
       "fecha": "2026-05-30",
-      "monto": 20,
+      "monto": 6,
       "motivo": "1er lugar CTF interno SCESI",
       "otorgado_por": "shamir"
     },
@@ -761,7 +1720,7 @@
       "usuario": "shamir",
       "actividad": "TALLER",
       "fecha": "2026-06-27",
-      "monto": 10,
+      "monto": 4,
       "motivo": "Taller de PyTorch",
       "otorgado_por": "shamir"
     },
@@ -769,32 +1728,16 @@
       "usuario": "shamir",
       "actividad": "PROYECTO",
       "fecha": "2026-07-25",
-      "monto": 15,
+      "monto": 5,
       "motivo": "Chatbot de reglamentos FCyT",
       "otorgado_por": "shamir"
     },
     {
       "usuario": "shamir",
-      "actividad": "COMPETENCIA",
-      "fecha": "2026-09-12",
-      "monto": 20,
-      "motivo": "1er lugar Datathon UMSS",
-      "otorgado_por": "shamir"
-    },
-    {
-      "usuario": "shamir",
       "actividad": "ASISTENCIA",
-      "fecha": "2026-09-19",
-      "monto": 1,
-      "motivo": "Asistencia: Meetup Python Bolivia",
-      "otorgado_por": "shamir"
-    },
-    {
-      "usuario": "shamir",
-      "actividad": "ORGANIZACION",
       "fecha": "2026-10-05",
-      "monto": 5,
-      "motivo": "Organización: Club de lectura de papers",
+      "monto": 1,
+      "motivo": "Asistencia: Club de lectura de papers",
       "otorgado_por": "shamir"
     }
   ],
@@ -802,37 +1745,32 @@
     {
       "usuario": "saul",
       "rango": "JUNIOR",
-      "fecha": "2026-05-10"
-    },
-    {
-      "usuario": "saul",
-      "rango": "MID",
-      "fecha": "2026-06-15"
+      "fecha": "2024-04-14"
     },
     {
       "usuario": "shamir",
       "rango": "JUNIOR",
-      "fecha": "2026-04-27"
-    },
-    {
-      "usuario": "isaac",
-      "rango": "JUNIOR",
-      "fecha": "2026-06-08"
+      "fecha": "2025-04-18"
     },
     {
       "usuario": "steven",
       "rango": "JUNIOR",
-      "fecha": "2026-05-31"
+      "fecha": "2025-05-04"
+    },
+    {
+      "usuario": "isaac",
+      "rango": "JUNIOR",
+      "fecha": "2025-05-26"
+    },
+    {
+      "usuario": "saul",
+      "rango": "MID",
+      "fecha": "2025-07-08"
     },
     {
       "usuario": "stefany",
       "rango": "JUNIOR",
-      "fecha": "2026-06-21"
-    },
-    {
-      "usuario": "franco",
-      "rango": "JUNIOR",
-      "fecha": "2026-07-21"
+      "fecha": "2025-07-21"
     }
   ]
 }
