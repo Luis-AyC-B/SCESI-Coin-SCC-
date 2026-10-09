@@ -54,3 +54,32 @@ export interface PremioReclamado {
   rango: Rango
   fecha: string
 }
+
+export interface RankingMiembro {
+  posicion: number
+  handle: string
+  nombre: string
+  area: string
+  rango: Rango
+  conteos: Record<string, number> // por abreviatura: T, E, C, P, I, A
+  scc: number
+  deltaSemana: number
+  serie: number[] // acumulado al cierre de cada mes de la gestión
+  esYo: boolean
+}
+
+export interface RankingArea {
+  posicion: number
+  area: string
+  miembros: number
+  scc: number
+  promedio: number
+  deltaMes: number
+  serie: number[]
+  esMiArea: boolean
+}
+
+export interface Ranking<T> {
+  meses: string[] // "Mar", "Abr", …
+  filas: T[]
+}

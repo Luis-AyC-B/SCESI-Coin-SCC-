@@ -14,6 +14,9 @@ export function useClaimRank() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: (codigo: string) => claimRank(codigo),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['me'] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['me'] })
+      queryClient.invalidateQueries({ queryKey: ['ranking'] }) // la tabla muestra el rango
+    },
   })
 }

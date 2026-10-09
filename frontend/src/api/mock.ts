@@ -1,6 +1,16 @@
 // Datos mock a partir de seed/data.json mientras el backend no expone la API.
 import seed from '@seed/data.json'
-import type { Actividad, Me, Movimiento, NuevaPeticion, PremioReclamado, Rango } from '@/types'
+import type {
+  Actividad,
+  Me,
+  Movimiento,
+  NuevaPeticion,
+  PremioReclamado,
+  Rango,
+  Ranking,
+  RankingArea,
+  RankingMiembro,
+} from '@/types'
 
 type Peticion = (typeof seed.peticiones)[number]
 
@@ -159,4 +169,85 @@ export function claimRank(codigo: string): Promise<void> {
   }
   reclamos.push({ usuario: handle, rango: codigo, fecha: hoy() })
   return delay(undefined)
+}
+
+const MESES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+
+// Meses de la gestión hasta hoy, como "yyyy-mm"
+function mesesGestion(): string[] {
+  const [y0, m0] = seed.gestion.inicio.split('-').map(Number)
+  const actual = hoy().slice(0, 7)
+  const meses: string[] = []
+  for (let y = y0, m = m0; ; m === 12 ? (y++, (m = 1)) : m++) {
+    const ym = `${y}-${String(m).padStart(2, '0')}`
+    meses.push(ym)
+    if (ym >= actual || meses.length >= 12) break
+  }
+  return meses
+}
+
+function haceDias(n: number): string {
+  const d = new Date()
+  d.setDate(d.getDate() - n)
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
+function serieAcumulada(handle: string, meses: string[]): number[] {
+  const em = emisiones(handle)
+  return meses.map((ym) => em.filter((e) => e.fecha.slice(0, 7) <= ym).reduce((s, e) => s + e.monto, 0))
+}
+
+function sumaDesde(handle: string, desde: string): number {
+  return emisiones(handle)
+    .filter((e) => e.fecha > desde)
+    .reduce((s, e) => s + e.monto, 0)
+}
+
+export function getIndividualRanking(): Promise<Ranking<RankingMiembro>> {
+  const meses = mesesGestion()
+  const yo = currentHandle()
+  const filas = seed.usuarios
+    .map((u): RankingMiembro => {
+      const em = emisiones(u.handle)
+      return {
+        posicion: 0,
+        handle: u.handle,
+        nombre: u.nombre,
+        area: u.area,
+        rango: rangoActual(u.handle),
+        conteos: Object.fromEntries(
+          actividades.map((a) => [a.abreviatura, em.filter((e) => e.actividad === a.codigo).length]),
+        ),
+        scc: totalScc(u.handle),
+        deltaSemana: sumaDesde(u.handle, haceDias(7)),
+        serie: serieAcumulada(u.handle, meses),
+        esYo: u.handle === yo,
+      }
+    })
+    .sort((a, b) => b.scc - a.scc || a.nombre.localeCompare(b.nombre))
+    .map((f, i) => ({ ...f, posicion: i + 1 }))
+  return delay({ meses: meses.map((ym) => MESES[Number(ym.slice(5)) - 1]), filas })
+}
+
+export function getAreaRanking(): Promise<Ranking<RankingArea>> {
+  const meses = mesesGestion()
+  const miArea = seed.usuarios.find((u) => u.handle === currentHandle())?.area
+  const filas = seed.areas
+    .map((area): RankingArea => {
+      const miembros = seed.usuarios.filter((u) => u.area === area)
+      const scc = miembros.reduce((s, u) => s + totalScc(u.handle), 0)
+      return {
+        posicion: 0,
+        area,
+        miembros: miembros.length,
+        scc,
+        promedio: miembros.length ? scc / miembros.length : 0,
+        deltaMes: miembros.reduce((s, u) => s + sumaDesde(u.handle, haceDias(30)), 0),
+        serie: meses.map((_, i) => miembros.reduce((s, u) => s + serieAcumulada(u.handle, meses)[i], 0)),
+        esMiArea: area === miArea,
+      }
+    })
+    .sort((a, b) => b.scc - a.scc || a.area.localeCompare(b.area))
+    .map((f, i) => ({ ...f, posicion: i + 1 }))
+  return delay({ meses: meses.map((ym) => MESES[Number(ym.slice(5)) - 1]), filas })
 }
