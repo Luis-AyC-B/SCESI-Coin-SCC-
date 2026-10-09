@@ -1,6 +1,6 @@
 // Datos mock a partir de seed/data.json mientras el backend no expone la API.
 import seed from '@seed/data.json'
-import type { Actividad, Me, Movimiento, NuevaPeticion, Rango } from '@/types'
+import type { Actividad, Me, Movimiento, NuevaPeticion, PremioReclamado, Rango } from '@/types'
 
 type Peticion = (typeof seed.peticiones)[number]
 
@@ -14,6 +14,7 @@ function currentHandle(): string {
 }
 
 const peticiones: Peticion[] = [...seed.peticiones]
+const reclamos = [...seed.premios_reclamados]
 const actividades: Actividad[] = seed.actividades
 const rangos: Rango[] = [...seed.rangos].sort((a, b) => a.orden - b.orden)
 
@@ -42,12 +43,17 @@ function totalScc(handle: string): number {
 }
 
 function rangoActual(handle: string): Rango {
-  const reclamados = seed.premios_reclamados.filter((c) => c.usuario === handle)
+  const reclamados = reclamos.filter((c) => c.usuario === handle)
   const ultimo = reclamados.map((c) => rangos.find((r) => r.codigo === c.rango)!).sort((a, b) => b.orden - a.orden)[0]
   return ultimo ?? rangos[0]
 }
 
 const delay = <T,>(value: T) => new Promise<T>((resolve) => setTimeout(() => resolve(value), 150))
+
+function hoy(): string {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
 
 export function getMe(): Promise<Me> {
   const handle = currentHandle()
@@ -90,7 +96,7 @@ export function getMyMovements(): Promise<Movimiento[]> {
     ...seed.otorgamientos
       .filter((g) => g.usuario === handle)
       .map((g, i): Movimiento => ({ id: `g${i}`, fecha: g.fecha, tipo: 'EMISIÓN', detalle: g.motivo, monto: g.monto })),
-    ...seed.premios_reclamados
+    ...reclamos
       .filter((c) => c.usuario === handle)
       .map((c, i): Movimiento => ({
         id: `c${i}`,
@@ -122,5 +128,35 @@ export function createRequest(data: NuevaPeticion): Promise<void> {
     resuelta_por: null,
     resuelta_en: null,
   })
+  return delay(undefined)
+}
+
+export function getRanks(): Promise<Rango[]> {
+  return delay(rangos)
+}
+
+export function getMyClaims(): Promise<PremioReclamado[]> {
+  const handle = currentHandle()
+  return delay(
+    reclamos
+      .filter((c) => c.usuario === handle)
+      .map((c) => ({ rango: rangos.find((r) => r.codigo === c.rango)!, fecha: c.fecha }))
+      .sort((a, b) => b.fecha.localeCompare(a.fecha)),
+  )
+}
+
+// Replica las reglas que valida el backend: solo el siguiente nivel y con SCC suficientes
+export function claimRank(codigo: string): Promise<void> {
+  const handle = currentHandle()
+  const rango = rangos.find((r) => r.codigo === codigo)
+  const actual = rangoActual(handle)
+  if (!rango) return Promise.reject(new Error('El premio no existe.'))
+  if (rango.prerequisito !== actual.codigo) {
+    return Promise.reject(new Error(`Primero tienes que reclamar el nivel anterior a ${rango.nombre}.`))
+  }
+  if (totalScc(handle) < rango.scc_requeridos) {
+    return Promise.reject(new Error(`Necesitas ${rango.scc_requeridos} SCC para reclamar ${rango.nombre}.`))
+  }
+  reclamos.push({ usuario: handle, rango: codigo, fecha: hoy() })
   return delay(undefined)
 }

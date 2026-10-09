@@ -49,3 +49,8 @@ export interface NuevaPeticion {
   titulo: string
   evidencia: string
 }
+
+export interface PremioReclamado {
+  rango: Rango
+  fecha: string
+}
