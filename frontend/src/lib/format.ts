@@ -23,3 +23,9 @@ export function shortWallet(address: string): string {
 export function todayIso(): string {
   return TODAY()
 }
+
+/** La gestión de la SCESI empieza en marzo: enero y febrero cuentan para la anterior. */
+export function gestionActual(): string {
+  const d = new Date()
+  return `Gestión ${d.getMonth() >= 2 ? d.getFullYear() : d.getFullYear() - 1}`
+}
