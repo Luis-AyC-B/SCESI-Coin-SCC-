@@ -1,0 +1,52 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-scesi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scesi}
+      POSTGRES_DB: ${POSTGRES_DB:-scesi_coin}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 5s
+      retries: 10
+
+  chain:
+    image: ghcr.io/foundry-rs/foundry:latest
+    entrypoint: ["anvil"]
+    user: root
+    command: ["--host", "0.0.0.0", "--state", "/data/state.json"]
+    ports:
+      - "8545:8545"
+    volumes:
+      - chain-data:/data
+
+  backend:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-scesi}:${POSTGRES_PASSWORD:-scesi}@db:5432/${POSTGRES_DB:-scesi_coin}
+      RPC_URL: http://chain:8545
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      chain:
+        condition: service_started
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  db-data:
+  chain-data:
