@@ -1,4 +1,6 @@
 import { Link, NavLink } from 'react-router'
+import { useMe } from '@/api/me'
+import { shortWallet } from '@/lib/format'
 
 const NAV = [
   { to: '/premios', label: 'Premios' },
@@ -7,10 +9,10 @@ const NAV = [
   { to: '/admin', label: 'Admin', adminOnly: true },
 ]
 
-// TODO: reemplazar por el usuario autenticado
-const user = { name: 'Franco', wallet: '0x7a3f…c91e', isAdmin: true }
-
 export default function Header() {
+  const { data: me } = useMe()
+  const isAdmin = me?.rol === 'DIRECTIVA'
+
   return (
     <header className="bg-ink border-scesi flex-none border-b-[3px]">
       <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-6 py-4">
@@ -18,7 +20,7 @@ export default function Header() {
           SCESI <span className="text-scesi-bright">Coin</span>
         </Link>
         <nav className="flex flex-wrap gap-1 text-[15px]">
-          {NAV.filter((item) => !item.adminOnly || user.isAdmin).map((item) => (
+          {NAV.filter((item) => !item.adminOnly || isAdmin).map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
@@ -34,15 +36,17 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-        <Link to="/panel" aria-label="Mi panel" className="flex items-center gap-2.5 text-sm">
-          <div className="text-right">
-            <div className="font-semibold text-white">{user.name}</div>
-            <div className="font-mono text-[13px] text-[#B5B5B5]">{user.wallet}</div>
-          </div>
-          <div className="bg-scesi ring-scesi flex size-10 items-center justify-center rounded-full border-[3px] border-white font-semibold text-white ring-2">
-            {user.name[0]}
-          </div>
-        </Link>
+        {me && (
+          <Link to="/panel" aria-label="Mi panel" className="flex items-center gap-2.5 text-sm">
+            <div className="text-right">
+              <div className="font-semibold text-white">{me.nombre}</div>
+              <div className="font-mono text-[13px] text-[#B5B5B5]">{shortWallet(me.wallet)}</div>
+            </div>
+            <div className="bg-scesi ring-scesi flex size-10 items-center justify-center rounded-full border-[3px] border-white font-semibold text-white ring-2">
+              {me.nombre[0]}
+            </div>
+          </Link>
+        )}
       </div>
     </header>
   )
