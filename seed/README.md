@@ -32,6 +32,12 @@ Saldos y rangos que salen del seed:
 | Steven | Seguridad | 34 | 20 | 54 | Junior |
 | Stefany | Diseño UI/UX | 30 | 18 | 48 | Junior |
 | Franco | Backend | 0 (nuevo) | 17 | 17 | Newbie |
+| Candy | Backend | 63 | 22 | 85 | Mid |
+| Diego | Desarrollo Web | 80 | 4 (poco activo) | 84 | Mid |
+| Luis | Seguridad | 46 | 19 | 65 | Mid (reclamado en 2026) |
+| Heidy | Diseño UI/UX | 34 | 16 | 50 | Junior (Mid disponible) |
+| Ricardo | Mobile | 23 | 12 | 35 | Junior |
+| Jhonatan | Inteligencia Artificial | 0 (nuevo) | 9 | 9 | Newbie |
 
 No incluye wallets, hashes ni bloques: el seed los genera al registrar cada EMISIÓN y PREMIO en la cadena.
 
