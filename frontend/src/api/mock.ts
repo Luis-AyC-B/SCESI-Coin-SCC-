@@ -52,6 +52,15 @@ function totalScc(handle: string): number {
   return emisiones(handle).reduce((sum, e) => sum + e.monto, 0)
 }
 
+// El ranking solo cuenta lo ganado en la gestión actual; el saldo y el rango usan el total
+function emisionesGestion(handle: string) {
+  return emisiones(handle).filter((e) => e.fecha >= seed.gestion.inicio)
+}
+
+function sccGestion(handle: string): number {
+  return emisionesGestion(handle).reduce((sum, e) => sum + e.monto, 0)
+}
+
 function rangoActual(handle: string): Rango {
   const reclamados = reclamos.filter((c) => c.usuario === handle)
   const ultimo = reclamados.map((c) => rangos.find((r) => r.codigo === c.rango)!).sort((a, b) => b.orden - a.orden)[0]
@@ -69,7 +78,7 @@ export function getMe(): Promise<Me> {
   const handle = currentHandle()
   const user = seed.usuarios.find((u) => u.handle === handle)!
   const rango = rangoActual(handle)
-  const ranking = seed.usuarios.map((u) => ({ handle: u.handle, scc: totalScc(u.handle) })).sort((a, b) => b.scc - a.scc)
+  const ranking = seed.usuarios.map((u) => ({ handle: u.handle, scc: sccGestion(u.handle) })).sort((a, b) => b.scc - a.scc)
   const propias = emisiones(handle)
   return delay({
     handle,
@@ -78,6 +87,7 @@ export function getMe(): Promise<Me> {
     rol: user.rol as Me['rol'],
     wallet: fakeWallet(handle),
     scc: totalScc(handle),
+    sccGestion: sccGestion(handle),
     rango,
     siguienteRango: rangos.find((r) => r.orden === rango.orden + 1) ?? null,
     posicion: ranking.findIndex((r) => r.handle === handle) + 1,
@@ -193,7 +203,7 @@ function haceDias(n: number): string {
 }
 
 function serieAcumulada(handle: string, meses: string[]): number[] {
-  const em = emisiones(handle)
+  const em = emisionesGestion(handle)
   return meses.map((ym) => em.filter((e) => e.fecha.slice(0, 7) <= ym).reduce((s, e) => s + e.monto, 0))
 }
 
@@ -208,7 +218,7 @@ export function getIndividualRanking(): Promise<Ranking<RankingMiembro>> {
   const yo = currentHandle()
   const filas = seed.usuarios
     .map((u): RankingMiembro => {
-      const em = emisiones(u.handle)
+      const em = emisionesGestion(u.handle)
       return {
         posicion: 0,
         handle: u.handle,
@@ -218,7 +228,7 @@ export function getIndividualRanking(): Promise<Ranking<RankingMiembro>> {
         conteos: Object.fromEntries(
           actividades.map((a) => [a.abreviatura, em.filter((e) => e.actividad === a.codigo).length]),
         ),
-        scc: totalScc(u.handle),
+        scc: sccGestion(u.handle),
         deltaSemana: sumaDesde(u.handle, haceDias(7)),
         serie: serieAcumulada(u.handle, meses),
         esYo: u.handle === yo,
@@ -235,7 +245,7 @@ export function getAreaRanking(): Promise<Ranking<RankingArea>> {
   const filas = seed.areas
     .map((area): RankingArea => {
       const miembros = seed.usuarios.filter((u) => u.area === area)
-      const scc = miembros.reduce((s, u) => s + totalScc(u.handle), 0)
+      const scc = miembros.reduce((s, u) => s + sccGestion(u.handle), 0)
       return {
         posicion: 0,
         area,

@@ -1,4 +1,4 @@
-import { shortWallet } from '@/lib/format'
+import { gestionActual, shortWallet } from '@/lib/format'
 import type { Me } from '@/types'
 
 export default function BalanceCard({ me, onRequest }: { me: Me; onRequest: () => void }) {
@@ -11,6 +11,9 @@ export default function BalanceCard({ me, onRequest }: { me: Me; onRequest: () =
       <div className="flex items-baseline gap-2">
         <span className="font-mono text-5xl font-medium tracking-tight">{me.scc}</span>
         <span className="text-scesi-light font-mono text-base">SCC</span>
+      </div>
+      <div className="font-mono text-sm text-[#B5B5B5]">
+        +{me.sccGestion} en la {gestionActual().toLowerCase()}
       </div>
       <button
         type="button"

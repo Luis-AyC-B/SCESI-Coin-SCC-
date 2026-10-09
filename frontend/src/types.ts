@@ -28,7 +28,8 @@ export interface Me {
   area: string
   rol: Rol
   wallet: string
-  scc: number
+  scc: number // total acumulado (define el rango)
+  sccGestion: number // ganado en la gestión actual (define la posición)
   rango: Rango
   siguienteRango: Rango | null
   posicion: number
@@ -61,8 +62,8 @@ export interface RankingMiembro {
   nombre: string
   area: string
   rango: Rango
-  conteos: Record<string, number> // por abreviatura: T, E, C, P, I, A
-  scc: number
+  conteos: Record<string, number> // por abreviatura, en la gestión actual
+  scc: number // ganado en la gestión actual
   deltaSemana: number
   serie: number[] // acumulado al cierre de cada mes de la gestión
   esYo: boolean
