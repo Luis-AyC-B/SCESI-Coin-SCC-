@@ -23,12 +23,20 @@ import type {
 
 type Peticion = (typeof seed.peticiones)[number]
 
-// Usuario simulado; para probar como directiva: localStorage.mockUser = 'shamir'
+// Usuario simulado mientras no hay login (lo cambia el selector "Ver como" del footer)
 function currentHandle(): string {
   try {
     return localStorage.getItem('mockUser') ?? 'franco'
   } catch {
     return 'franco'
+  }
+}
+
+export function setMockUser(handle: string): void {
+  try {
+    localStorage.setItem('mockUser', handle)
+  } catch {
+    // sin storage (modo privado): no se puede cambiar de usuario
   }
 }
 

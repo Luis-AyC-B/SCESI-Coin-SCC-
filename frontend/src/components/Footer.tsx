@@ -1,3 +1,5 @@
+import DemoUserSwitch from './DemoUserSwitch'
+
 export default function Footer() {
   return (
     <footer className="border-border flex-none border-t bg-white">
@@ -6,6 +8,7 @@ export default function Footer() {
         <span className="text-ink-2 text-sm">
           Sociedad Científica de Estudiantes de Sistemas e Informática · UMSS
         </span>
+        <DemoUserSwitch />
       </div>
     </footer>
   )
