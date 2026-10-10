@@ -2,7 +2,9 @@
 import seed from '@seed/data.json'
 import type {
   Actividad,
+  Bloque,
   Decision,
+  ExplorerStats,
   Me,
   Miembro,
   Movimiento,
@@ -16,6 +18,7 @@ import type {
   Ranking,
   RankingArea,
   RankingMiembro,
+  TxCadena,
 } from '@/types'
 
 type Peticion = (typeof seed.peticiones)[number]
@@ -32,17 +35,29 @@ function currentHandle(): string {
 const peticiones: Peticion[] = [...seed.peticiones]
 const reclamos = [...seed.premios_reclamados]
 const otorgamientos = [...seed.otorgamientos]
+
+// Orden de los eventos creados en esta sesión (decisiones, otorgamientos, premios) dentro del mismo día
+const decididas = new WeakMap<object, number>()
+let secuencia = 0
 const actividades: Actividad[] = seed.actividades
 const rangos: Rango[] = [...seed.rangos].sort((a, b) => a.orden - b.orden)
 
-function fakeWallet(handle: string): string {
-  let h = 0x811c9dc5
-  let hex = ''
-  for (let i = 0; hex.length < 40; i++) {
-    h = Math.imul(h ^ handle.charCodeAt(i % handle.length) ^ i, 0x01000193) >>> 0
-    hex += h.toString(16).padStart(8, '0')
+// Hash de juguete (no criptográfico): cada tramo de 8 dígitos recorre todo el texto
+function fakeHash(input: string, length = 64): string {
+  let out = ''
+  for (let k = 0; out.length < length; k++) {
+    let h = (0x811c9dc5 ^ Math.imul(k + 1, 0x9e3779b9)) >>> 0
+    for (let i = 0; i < input.length; i++) h = Math.imul(h ^ input.charCodeAt(i), 0x01000193)
+    h ^= h >>> 13
+    h = Math.imul(h, 0x5bd1e995)
+    h ^= h >>> 15
+    out += (h >>> 0).toString(16).padStart(8, '0')
   }
-  return `0x${hex.slice(0, 40)}`
+  return `0x${out.slice(0, length)}`
+}
+
+function fakeWallet(handle: string): string {
+  return fakeHash(`wallet:${handle}`, 40)
 }
 
 function emisiones(handle: string) {
@@ -184,7 +199,9 @@ export function claimRank(codigo: string): Promise<void> {
   if (totalScc(handle) < rango.scc_requeridos) {
     return Promise.reject(new Error(`Necesitas ${rango.scc_requeridos} SCC para reclamar ${rango.nombre}.`))
   }
-  reclamos.push({ usuario: handle, rango: codigo, fecha: hoy() })
+  const reclamo = { usuario: handle, rango: codigo, fecha: hoy() }
+  reclamos.push(reclamo)
+  decididas.set(reclamo, ++secuencia)
   return delay(undefined)
 }
 
@@ -275,10 +292,6 @@ function soloDirectiva(): Promise<never> | null {
   const user = seed.usuarios.find((u) => u.handle === currentHandle())
   return user?.rol === 'DIRECTIVA' ? null : Promise.reject(new Error('Solo la mesa directiva puede hacer esto.'))
 }
-
-// Orden de las decisiones tomadas en esta sesión, para listarlas primero dentro del mismo día
-const decididas = new WeakMap<object, number>()
-let secuencia = 0
 
 const nombreDe = (handle: string) => seed.usuarios.find((u) => u.handle === handle)?.nombre ?? handle
 const actividadDe = (codigo: string) => actividades.find((a) => a.codigo === codigo)!
@@ -428,5 +441,107 @@ export function getRecentClaims(limit = 5): Promise<PremioReclamadoAdmin[]> {
         .slice(0, limit)
         .map((c) => ({ miembro: nombreDe(c.usuario), rango: rangos.find((r) => r.codigo === c.rango)!, fecha: c.fecha })),
     )
+  )
+}
+
+// ---------- Explorador (cadena simulada: una transacción por bloque, como mina Anvil) ----------
+
+
+const FIRMANTES = ['Directiva', 'Nodo 2', 'Nodo 3']
+
+function construirCadena(): Bloque[] {
+  type Evento = Omit<TxCadena, 'hash' | 'bloque'> & { orden: number; tipoOrden: number }
+  const eventos: Evento[] = [
+    ...peticiones
+      .filter((p) => p.estado === 'APROBADA')
+      .map((p, i): Evento => ({
+        tipo: 'EMISIÓN',
+        fecha: p.resuelta_en ?? p.fecha,
+        de: 'Directiva',
+        para: nombreDe(p.usuario),
+        handle: p.usuario,
+        monto: p.monto_aprobado,
+        motivo: p.titulo,
+        orden: decididas.get(p) ?? -1e6 + i,
+        tipoOrden: 0,
+      })),
+    ...otorgamientos.map((g, i): Evento => ({
+      tipo: 'EMISIÓN',
+      fecha: g.fecha,
+      de: 'Directiva',
+      para: nombreDe(g.usuario),
+      handle: g.usuario,
+      monto: g.monto,
+      motivo: g.motivo,
+      orden: decididas.get(g) ?? -1e6 + i,
+      tipoOrden: 0,
+    })),
+    ...reclamos.map((c, i): Evento => ({
+      tipo: 'PREMIO',
+      fecha: c.fecha,
+      de: nombreDe(c.usuario),
+      para: 'Registro de rangos',
+      handle: c.usuario,
+      monto: null,
+      motivo: `Reclamó ${rangos.find((r) => r.codigo === c.rango)?.nombre ?? c.rango}`,
+      orden: decididas.get(c) ?? -1e6 + i,
+      tipoOrden: 1,
+    })),
+  ].sort((a, b) => a.fecha.localeCompare(b.fecha) || a.orden - b.orden || a.tipoOrden - b.tipoOrden)
+
+  const bloques: Bloque[] = []
+  let prev = '0x' + '0'.repeat(64)
+  eventos.forEach(({ orden: _o, tipoOrden: _t, ...ev }, i) => {
+    const numero = i + 1
+    const txHash = fakeHash(`${ev.tipo}|${ev.handle}|${ev.fecha}|${ev.monto}|${ev.motivo}|${numero}`)
+    const hash = fakeHash(`${prev}|${txHash}|${numero}`)
+    bloques.push({
+      numero,
+      fecha: ev.fecha,
+      hash,
+      hashPrevio: prev,
+      firmante: FIRMANTES[numero % FIRMANTES.length],
+      txs: [{ ...ev, hash: txHash, bloque: numero }],
+    })
+    prev = hash
+  })
+  return bloques
+}
+
+export function getExplorerStats(): Promise<ExplorerStats> {
+  const cadena = construirCadena()
+  const txs = cadena.flatMap((b) => b.txs)
+  return delay({
+    altura: cadena.length,
+    sccEmitidosGestion: txs
+      .filter((t) => t.tipo === 'EMISIÓN' && t.fecha >= seed.gestion.inicio)
+      .reduce((s, t) => s + (t.monto ?? 0), 0),
+    premiosOtorgados: txs.filter((t) => t.tipo === 'PREMIO').length,
+    validadoresActivos: FIRMANTES.length,
+    validadoresTotales: FIRMANTES.length,
+  })
+}
+
+export function getLatestBlocks(limit = 4): Promise<Bloque[]> {
+  return delay(construirCadena().slice(-limit).reverse())
+}
+
+export function getBlock(numero: number): Promise<Bloque | null> {
+  return delay(construirCadena().find((b) => b.numero === numero) ?? null)
+}
+
+/** Busca por número de bloque (#12 o 12), hash de bloque/transacción (0x…) o nombre de miembro. */
+export function searchExplorer(q: string): Promise<TxCadena[]> {
+  const query = q.trim().toLowerCase()
+  if (!query) return delay([])
+  const cadena = construirCadena()
+  const txs = cadena.flatMap((b) => b.txs)
+  const numero = query.replace(/^#/, '')
+  if (/^\d+$/.test(numero)) return delay(cadena.find((b) => b.numero === Number(numero))?.txs ?? [])
+  if (query.startsWith('0x')) {
+    return delay(cadena.filter((b) => b.hash.startsWith(query) || b.txs.some((t) => t.hash.startsWith(query))).flatMap((b) => b.txs))
+  }
+  return delay(
+    txs.filter((t) => t.de.toLowerCase().includes(query) || t.para.toLowerCase().includes(query)).reverse(),
   )
 }

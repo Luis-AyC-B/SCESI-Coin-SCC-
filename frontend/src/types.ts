@@ -131,3 +131,32 @@ export interface PremioReclamadoAdmin {
   rango: Rango
   fecha: string
 }
+
+export interface TxCadena {
+  hash: string
+  bloque: number
+  tipo: 'EMISIÓN' | 'PREMIO'
+  fecha: string
+  de: string
+  para: string
+  handle: string
+  monto: number | null
+  motivo: string
+}
+
+export interface Bloque {
+  numero: number
+  fecha: string
+  hash: string
+  hashPrevio: string
+  firmante: string
+  txs: TxCadena[]
+}
+
+export interface ExplorerStats {
+  altura: number
+  sccEmitidosGestion: number
+  premiosOtorgados: number
+  validadoresActivos: number
+  validadoresTotales: number
+}
