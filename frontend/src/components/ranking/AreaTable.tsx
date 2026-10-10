@@ -1,5 +1,6 @@
 import type { RankingArea } from '@/types'
-import { LineKey, type SeriesStyle } from './seriesStyle'
+import LineKey from './LineKey'
+import type { SeriesStyle } from './seriesStyle'
 
 const th = 'px-3 py-3 font-semibold'
 

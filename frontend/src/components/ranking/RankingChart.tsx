@@ -1,7 +1,8 @@
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis, type TooltipContentProps, type TooltipValueType } from 'recharts'
 
 type TooltipProps = TooltipContentProps<TooltipValueType, string | number>
-import { LineKey, type SeriesStyle } from './seriesStyle'
+import LineKey from './LineKey'
+import type { SeriesStyle } from './seriesStyle'
 
 export interface ChartSeries {
   key: string

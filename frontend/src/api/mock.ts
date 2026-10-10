@@ -397,7 +397,7 @@ export function getDecisions(): Promise<Decision[]> {
     }),
   )
   const todas = [...resueltas, ...directas].sort((a, b) => b.fecha.localeCompare(a.fecha) || b.orden - a.orden)
-  return soloDirectiva() ?? delay(todas.map(({ orden: _, ...d }) => d))
+  return soloDirectiva() ?? delay(todas)
 }
 
 export function grantCoins(data: NuevoOtorgamiento): Promise<void> {
