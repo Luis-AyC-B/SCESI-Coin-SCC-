@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router'
+import { Link, NavLink, useMatch } from 'react-router'
 import { useMe } from '@/api/me'
 import { shortWallet } from '@/lib/format'
 
@@ -12,6 +12,8 @@ const NAV = [
 export default function Header() {
   const { data: me } = useMe()
   const isAdmin = me?.rol === 'DIRECTIVA'
+  // En Mi panel el perfil ya está en pantalla; se oculta sin quitarlo para que la navegación no se mueva
+  const onPanel = useMatch('/panel') !== null
 
   return (
     <header className="bg-ink border-scesi flex-none border-b-[3px]">
@@ -37,7 +39,11 @@ export default function Header() {
           ))}
         </nav>
         {me && (
-          <Link to="/panel" aria-label="Mi panel" className="flex items-center gap-2.5 text-sm">
+          <Link
+            to="/panel"
+            aria-label="Mi panel"
+            className={`flex items-center gap-2.5 text-sm ${onPanel ? 'invisible' : ''}`}
+          >
             <div className="text-right">
               <div className="font-semibold text-white">{me.nombre}</div>
               <div className="font-mono text-[13px] text-[#B5B5B5]">{shortWallet(me.wallet)}</div>
