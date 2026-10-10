@@ -21,6 +21,7 @@ export default function App() {
             <Route path="ranking" element={<Ranking />} />
             <Route path="explorador" element={<Explorador />} />
             <Route path="admin" element={<Admin />} />
+            <Route path="*" element={<Navigate to="/panel" replace />} />
           </Route>
         </Routes>
       </BrowserRouter>
