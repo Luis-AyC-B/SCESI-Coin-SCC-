@@ -29,3 +29,8 @@ export function gestionActual(): string {
   const d = new Date()
   return `Gestión ${d.getMonth() >= 2 ? d.getFullYear() : d.getFullYear() - 1}`
 }
+
+/** "0x3b7e…d210" */
+export function shortHash(hash: string): string {
+  return `${hash.slice(0, 6)}…${hash.slice(-4)}`
+}
