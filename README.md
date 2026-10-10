@@ -28,3 +28,13 @@ docker compose up -d db chain     # Postgres + Anvil
 cd backend && uv sync && uv run alembic upgrade head && uv run fastapi dev app/main.py
 cd frontend && npm install && npm run dev
 ```
+
+## Demo (frontend con datos mock)
+
+Mientras el backend no expone la API, el frontend usa `seed/data.json` a través de `frontend/src/api/mock.ts` (los cambios viven en memoria; recargar la página los reinicia). Cada pantalla consume hooks de `frontend/src/api/*.ts`: para conectar el backend basta con cambiar esas funciones por llamadas a `api()`.
+
+El selector **Ver como (demo)** del footer cambia de usuario sin recargar. Guion:
+
+1. Ver como **Shamir (directiva)** → Admin → aprobar "Taller de Git para nuevos" de Franco (+4).
+2. Ver como **Franco** → Premios → reclamar **Junior**.
+3. Explorador → la EMISIÓN y el PREMIO aparecen en los dos últimos bloques.
